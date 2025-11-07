@@ -4,18 +4,18 @@
 
 A decentralized intermediate delivery platform where couriers deliver parcels to smart lockers, and gig workers (Droppers) pick them up to deliver to customers. Built with blockchain technology for transparent, secure payments.
 
-## 🌟 Key Features
+## Key Features
 
-- **🔐 Blockchain Security**: Smart contract escrow system for safe payments
-- **🔑 MetaMask Authentication**: Web3 wallet-based login with signature verification
-- **📍 Smart Locker Network**: 8 strategically located locker hubs across Athens
-- **🗺️ Interactive Mapping**: Real-time GPS tracking with Google Maps
-- **💰 Transparent Pricing**: €1 base + €1/km (Small), €1.50/km (Medium), €2/km (Large) + 10% platform fee
-- **⚡ Crypto Payments**: ETH payments with QR codes on Sepolia Testnet
-- **📦 Package Tracking**: Complete job lifecycle from creation to delivery
-- **🔒 Privacy First**: SHA256 encryption for customer delivery addresses
+- **Blockchain Security**: Smart contract escrow system for safe payments
+- **MetaMask Authentication**: Web3 wallet-based login with signature verification
+- **Smart Locker Network**: 2000+ real ACS Smartpoint locations across Athens
+- **Interactive Mapping**: Real-time GPS tracking with Google Maps
+- **Transparent Pricing**: €1 base + €1/km (Small), €1.50/km (Medium), €2/km (Large) + 10% platform fee
+- **Crypto Payments**: ETH payments with QR codes on Sepolia Testnet
+- **Package Tracking**: Complete job lifecycle from creation to delivery
+- **Privacy First**: SHA256 encryption for customer delivery addresses
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend:**
 - HTML5, CSS3, Vanilla JavaScript
@@ -40,7 +40,7 @@ A decentralized intermediate delivery platform where couriers deliver parcels to
 - CoinGecko API (cryptocurrency pricing)
 - OpenStreetMap (alternative map tiles)
 
-## 📦 Quick Start
+## Quick Start
 
 ```bash
 # 1. Install dependencies
@@ -69,7 +69,7 @@ npm run dev
 3. **Get test ETH** from [Sepolia Faucet](https://sepoliafaucet.com/)
 4. **Sign up** on the platform and connect your wallet
 
-## 🗺️ Smart Locker Network
+## Smart Locker Network
 
 ### Real Locker Locations in Athens
 
@@ -93,14 +93,14 @@ We used the **Google Maps Places API** to discover and validate real locker loca
 ### Interactive Map Features
 
 **Powered by Google Maps JavaScript API:**
-- 📍 Real-time locker markers with custom icons
-- � Search and filter lockers by location
-- 📏 Distance calculation from user location
-- 🗺️ Interactive map with zoom and pan
-- 📌 Click locker markers to view details and select
-- 🧭 GPS location services for nearby lockers
+- Real-time locker markers with custom icons
+- Search and filter lockers by location
+- Distance calculation from user location
+- Interactive map with zoom and pan
+- Click locker markers to view details and select
+- GPS location services for nearby lockers
 
-## 🔄 How It Works
+## How It Works
 
 ### For Customers:
 1. **Create Order** - Select pickup locker and enter delivery address
@@ -114,14 +114,14 @@ We used the **Google Maps Places API** to discover and validate real locker loca
 3. **Pick Up** - Retrieve package from smart locker
 4. **Deliver** - Complete delivery and earn 90% of fees
 
-## � Pricing Model
+## Pricing Model
 
 **Base Fee:** €1 (all packages)
 
 **Distance Multipliers:**
-- 📦 **Small** (letters, documents): €1.00/km
-- 📫 **Medium** (shoeboxes, up to 2.5kg): €1.50/km (1.5x)
-- 📮 **Large** (boxes, 5kg+): €2.00/km (2x)
+- **Small** (letters, documents): €1.00/km
+- **Medium** (shoeboxes, up to 2.5kg): €1.50/km (1.5x)
+- **Large** (boxes, 5kg+): €2.00/km (2x)
 
 **Platform Fee:** 10% of subtotal
 
@@ -161,79 +161,79 @@ We used the **Google Maps Places API** to discover and validate real locker loca
 - `POST /api/pricing/calculate` - Calculate delivery cost
 - `GET /api/pricing/rates` - Get current pricing rates
 
-## 🎯 Complete Delivery Flow
+## Complete Delivery Flow
 
 ```
-1. 📦 Courier → Smart Locker
+1. Courier → Smart Locker
    └─ Courier delivers package to nearest locker
    └─ System generates pickup code
 
-2. 💳 Customer → Payment
+2. Customer → Payment
    └─ Creates order on platform
    └─ Pays with ETH (QR code)
    └─ Funds held in escrow
 
-3. 👀 Dropper → Browse Jobs
+3. Dropper → Browse Jobs
    └─ Views available deliveries
    └─ Sees earnings and distance
 
-4. ✅ Dropper → Accept Job
+4. Dropper → Accept Job
    └─ Commits to delivery
    └─ Receives locker access code
 
-5. 🔓 Dropper → Pickup
+5. Dropper → Pickup
    └─ Opens locker with code
    └─ Confirms pickup in app
 
-6. 🚴 Dropper → Deliver
+6. Dropper → Deliver
    └─ Delivers to customer address
    └─ Customer provides confirmation code
 
-7. 💰 Payment Released
+7. Payment Released
    └─ Smart contract releases funds
    └─ Dropper receives 90% of fee
    └─ Platform takes 10%
 ```
 
-## 🔐 Security & Privacy
+## Security & Privacy
 
 **Authentication:**
-- 🔑 MetaMask signature verification (ethers.js)
-- 🎫 JWT tokens with 7-day expiry
-- 🔒 Secure session management
+- MetaMask signature verification (ethers.js)
+- JWT tokens with 7-day expiry
+- Secure session management
 
 **Data Protection:**
-- 🔐 SHA256 encryption for customer PII
-- 📍 Address privacy until job accepted
-- 🔗 Blockchain transparency for payments
+- SHA256 encryption for customer PII
+- Address privacy until job accepted
+- Blockchain transparency for payments
 
 **Verification:**
-- 📟 Unique pickup codes for lockers
-- 🔢 Delivery confirmation codes
-- ⭐ Rating system for accountability
+- Unique pickup codes for lockers
+- Delivery confirmation codes
+- Rating system for accountability
 
-## 🌱 DIEM Hackathon 2025
+## DIEM Hackathon 2025
 
 This project demonstrates the potential of **blockchain technology** to revolutionize everyday services like delivery logistics. Built by a team of 4 students, it showcases:
 
-- ✅ Decentralized payment processing
-- ✅ Smart contract escrow systems
-- ✅ Fair compensation for gig workers (90% earnings)
-- ✅ Transparent, trustless transactions
-- ✅ Real-world application of Web3 technology
+- Decentralized payment processing
+- Smart contract escrow systems
+- Fair compensation for gig workers (90% earnings)
+- Transparent, trustless transactions
+- Real-world application of Web3 technology
 
 ### Team Focus
 Our goal is to create a **fairer, more transparent alternative** to traditional delivery platforms that take large commission cuts. By leveraging blockchain, we ensure payment security and eliminate the need for trust between strangers.
 
-## 📄 License
+## License
 
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🤝 Contributing
+## Contributing
 
 Built for DIEM Hackathon 2025. For questions or collaboration:
 - Repository: [github.com/krisskash/DIEM_HACKATHON_2025](https://github.com/krisskash/DIEM_HACKATHON_2025)
 
 ---
 
-**Made with 💚 for a greener, fairer delivery future.**
+**Made with care for a greener, fairer delivery future.**
