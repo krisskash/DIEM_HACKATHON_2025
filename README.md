@@ -47,10 +47,14 @@ A decentralized intermediate delivery platform where couriers deliver parcels to
 npm install
 
 # 2. Setup environment variables
-# Create .env file with:
+# Copy .env.example to .env and configure:
+cp .env.example .env
+
+# Then edit .env with your credentials:
 PORT=3000
 MONGODB_URI=mongodb://localhost:27017/diem_delivery
 JWT_SECRET=your_jwt_secret_here
+GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 
 # 3. Ensure MongoDB is running
 # (Use MongoDB Compass or local MongoDB instance)

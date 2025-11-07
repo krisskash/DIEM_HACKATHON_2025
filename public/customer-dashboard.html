@@ -4,7 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Customer Dashboard - ecodrop³</title>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgBGFbJ5FngNQY6yNun7l2NFMZxkETsz8&libraries=places"></script>
+  <script>
+    // Load Google Maps API key from server
+    (async function() {
+      try {
+        const response = await fetch('http://localhost:3000/api/config/maps-key');
+        const data = await response.json();
+        if (data.success && data.apiKey) {
+          const script = document.createElement('script');
+          script.src = `https://maps.googleapis.com/maps/api/js?key=${data.apiKey}&libraries=places`;
+          script.async = true;
+          document.head.appendChild(script);
+        }
+      } catch (error) {
+        console.error('Failed to load Maps API key:', error);
+      }
+    })();
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     * {
