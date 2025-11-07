@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works - ecodrop³</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --mint-green: #B8F4D4;
+      --dark-green: #4CAF50;
+      --text-dark: #2c3e50;
+      --text-light: #5a6c7d;
+      --white: #ffffff;
+      --light-bg: #f8f9fa;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--white);
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-dark);
+      flex: 1;
+    }
+
+    .logo sup {
+      color: var(--dark-green);
+      font-size: 0.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--dark-green);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--text-dark);
+      color: var(--text-dark);
+    }
+
+    .btn-outline:hover {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-primary {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--dark-green);
+    }
+
+    .how-hero {
+      background: var(--mint-green);
+      color: var(--text-dark);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .how-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .how-hero p {
+      font-size: 1.3rem;
+      opacity: 0.95;
+    }
+
+    .how-content {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-button {
+      padding: 1rem 2rem;
+      background: white;
+      border: 2px solid var(--dark-green);
+      color: var(--dark-green);
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .tab-button:hover,
+    .tab-button.active {
+      background: var(--dark-green);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .steps-container {
+      margin-top: 3rem;
+    }
+
+    .step {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      align-items: center;
+    }
+
+    .step:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .step-number {
+      font-size: 4rem;
+      font-weight: bold;
+      color: var(--dark-green);
+      min-width: 100px;
+      text-align: center;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-content h3 {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    .step-content p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .step-icon {
+      font-size: 5rem;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .feature-box .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-box h3 {
+      font-size: 1.4rem;
+      color: #2c3e50;
+      margin-bottom: 0.8rem;
+    }
+
+    .feature-box p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .cta-section {
+      background: var(--dark-green);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 16px;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: white;
+      color: var(--dark-green);
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .step {
+        flex-direction: column !important;
+        text-align: center;
+      }
+
+      .step-number,
+      .step-icon {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">ecodrop<sup>3</sup></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-buttons">
+      <a href="signin.html" class="btn btn-outline">Sign In</a>
+      <a href="signup.html" class="btn btn-primary">Sign Up</a>
+    </div>
+  </nav>
+
+  <div class="how-hero">
+    <h1>How Dropper Works</h1>
+    <p>Simple, secure, and decentralized package delivery</p>
+  </div>
+
+  <div class="how-content">
+    <div class="tabs">
+      <button class="tab-button active" onclick="showTab('customer')">👤 For Customers</button>
+      <button class="tab-button" onclick="showTab('dropper')">🚶 For Droppers</button>
+    </div>
+
+    <!-- Customer Tab -->
+    <div id="customer-tab" class="tab-content active">
+      <h2 style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 2rem;">
+        Send Your Package in 4 Easy Steps
+      </h2>
+
+      <div class="steps-container">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-icon">📦</div>
+          <div class="step-content">
+            <h3>Drop Off at a Locker</h3>
+            <p>
+              Find a nearby package locker and drop off your item. Get a unique locker code 
+              that ensures only authorized droppers can pick up your package. Lockers are 
+              available 24/7 for your convenience.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-icon">💳</div>
+          <div class="step-content">
+            <h3>Create Order & Pay with Crypto</h3>
+            <p>
+              Enter delivery details, select package size, and pay securely with Ethereum. 
+              Your payment is held in a smart contract escrow - funds are only released 
+              when delivery is confirmed. Transparent, secure, and instant.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-icon">👤</div>
+          <div class="step-content">
+            <h3>Dropper Accepts & Picks Up</h3>
+            <p>
+              A nearby dropper accepts your delivery request and picks up the package from 
+              the locker using your code. You'll see their name and can track the delivery 
+              in real-time as it happens.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-icon">✅</div>
+          <div class="step-content">
+            <h3>Receive & Confirm Delivery</h3>
+            <p>
+              Your package arrives at the destination. Confirm delivery with your unique 
+              delivery code. The dropper gets paid automatically, and you can rate their 
+              service. Simple, secure, and complete!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dropper Tab -->
+    <div id="dropper-tab" class="tab-content">
+      <h2 style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 2rem;">
+        Earn Money Delivering Packages
+      </h2>
+
+      <div class="steps-container">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-icon">📱</div>
+          <div class="step-content">
+            <h3>Browse Available Deliveries</h3>
+            <p>
+              See all available delivery jobs in your area. View package details, pickup 
+              location, delivery distance, and how much you'll earn. Choose jobs that fit 
+              your schedule and route.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-icon">✅</div>
+          <div class="step-content">
+            <h3>Accept a Delivery Job</h3>
+            <p>
+              Accept a job that works for you. You'll receive the locker code and location. 
+              The payment is already secured in escrow, so you know you'll get paid when 
+              you complete the delivery.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-icon">📦</div>
+          <div class="step-content">
+            <h3>Pick Up from Locker</h3>
+            <p>
+              Go to the locker location and retrieve the package using the provided code. 
+              Confirm pickup in the app, and you're ready to deliver! The customer will be 
+              notified that their package is in transit.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-icon">💰</div>
+          <div class="step-content">
+            <h3>Deliver & Get Paid</h3>
+            <p>
+              Deliver the package to the destination. Get the delivery confirmation code 
+              from the customer, enter it in the app, and get paid instantly! Your earnings 
+              are transferred automatically from the escrow contract.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Features Section -->
+    <div style="margin-top: 5rem;">
+      <h2 style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 2rem;">
+        Why Choose Dropper?
+      </h2>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="icon">🔒</div>
+          <h3>Blockchain Security</h3>
+          <p>Smart contract escrow ensures your payment is safe and only released on successful delivery</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="icon">⚡</div>
+          <h3>Instant Payments</h3>
+          <p>Droppers get paid immediately upon delivery confirmation - no waiting periods</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="icon">📍</div>
+          <h3>Real-Time Tracking</h3>
+          <p>Track your package every step of the way from pickup to delivery</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="icon">💰</div>
+          <h3>Fair Pricing</h3>
+          <p>Transparent pricing with no hidden fees. 90% of delivery costs go to droppers</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="icon">🌍</div>
+          <h3>Eco-Friendly</h3>
+          <p>Utilize existing routes and reduce carbon footprint compared to traditional delivery</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="icon">⭐</div>
+          <h3>Rating System</h3>
+          <p>Build trust with our community rating system for droppers</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <h2>Ready to Get Started?</h2>
+      <p>Join thousands of users already using ecodrop³ for their delivery needs</p>
+      <a href="index.html" class="cta-button">Start Now</a>
+    </div>
+  </div>
+
+  <footer style="background: var(--text-dark); color: white; padding: 2rem; text-align: center; margin-top: 4rem;">
+    <p>&copy; 2025 ecodrop³. DIEM Hackathon 2025 Project.</p>
+  </footer>
+
+  <script>
+    function showTab(tabName) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      // Remove active from all buttons
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      // Show selected tab
+      document.getElementById(tabName + '-tab').classList.add('active');
+      
+      // Add active to clicked button
+      event.target.classList.add('active');
+    }
+
+    // Check if user is logged in on page load
+    const API_BASE = 'http://localhost:3000/api';
+    
+    document.addEventListener('DOMContentLoaded', async () => {
+      const authToken = localStorage.getItem('authToken');
+      
+      if (authToken) {
+        try {
+          const res = await fetch(`${API_BASE}/auth/me`, {
+            headers: { 'Authorization': `Bearer ${authToken}` }
+          });
+          const data = await res.json();
+          
+          if (data.success) {
+            // User is logged in, replace buttons with dashboard link
+            const navButtons = document.querySelector('.nav-buttons');
+            const dashboardUrl = data.user.role === 'gigworker' || data.user.role === 'both' 
+              ? 'gigworker-dashboard.html' 
+              : 'customer-dashboard.html';
+            
+            navButtons.innerHTML = `
+              <a href="${dashboardUrl}" class="btn btn-primary">📊 Go to Dashboard</a>
+              <button onclick="logout()" class="btn btn-outline">Logout</button>
+            `;
+          }
+        } catch (error) {
+          console.error('Auth check error:', error);
+        }
+      }
+    });
+    
+    function logout() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('accountType');
+      window.location.reload();
+    }
+  </script>
+</body>
+</html>

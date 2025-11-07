@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - ecodrop³</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgBGFbJ5FngNQY6yNun7l2NFMZxkETsz8&libraries=places"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --mint-green: #B8F4D4;
+      --dark-green: #4CAF50;
+      --text-dark: #2c3e50;
+      --text-light: #5a6c7d;
+      --white: #ffffff;
+      --light-bg: #f8f9fa;
+      --border: #e0e0e0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--white);
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-dark);
+    }
+
+    .logo sup {
+      color: var(--dark-green);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-dark);
+      border: 2px solid var(--text-dark);
+    }
+
+    .btn-outline:hover {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-back {
+      background: var(--mint-green);
+      color: var(--text-dark);
+      text-decoration: none;
+    }
+
+    .btn-back:hover {
+      background: var(--dark-green);
+      color: var(--white);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    /* Profile Header */
+    .profile-header {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .profile-info h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .profile-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .stat {
+      background: var(--light-bg);
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--dark-green);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-top: 0.5rem;
+    }
+
+    .wallet-info {
+      background: var(--mint-green);
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    .wallet-info p {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .wallet-address {
+      font-family: monospace;
+      font-size: 0.85rem;
+      word-break: break-all;
+      background: var(--white);
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin-top: 0.5rem;
+    }
+
+    /* Completed Orders */
+    .orders-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+    }
+
+    .order-card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+      border-left: 5px solid var(--dark-green);
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .order-id {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .order-date {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .order-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .order-detail {
+      font-size: 0.9rem;
+    }
+
+    .order-detail strong {
+      display: block;
+      color: var(--text-light);
+      font-size: 0.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .rating-display {
+      background: #d4edda;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .rating-stars {
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .transaction-box {
+      background: #f8f9fa;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      border: 1px solid var(--border);
+    }
+
+    .transaction-label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .transaction-hash {
+      background: var(--white);
+      padding: 0.75rem;
+      border-radius: 5px;
+      font-family: monospace;
+      word-break: break-all;
+      margin-bottom: 0.5rem;
+      overflow-x: auto;
+    }
+
+    .transaction-link {
+      color: var(--dark-green);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .transaction-link:hover {
+      text-decoration: underline;
+    }
+
+    .transaction-meta {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.5rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      background: var(--white);
+      border-radius: 15px;
+      color: var(--text-light);
+    }
+
+    .empty-state-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .empty-state p {
+      font-size: 1.1rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .profile-header {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .order-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" style="text-decoration: none;">
+      <div class="logo">ecodrop<sup>3</sup></div>
+    </a>
+    <div class="nav-right">
+      <span id="userName">Loading...</span>
+      <button class="btn btn-outline" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <a href="#" onclick="goBack()" class="btn btn-back back-link">← Back</a>
+
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <div class="profile-info">
+        <h1>👤 Your Profile</h1>
+        <div class="profile-stats">
+          <div class="stat">
+            <div class="stat-value" id="completedCount">0</div>
+            <div class="stat-label">Completed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" id="ratingValue">5.0</div>
+            <div class="stat-label">Rating</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" id="totalCount">0</div>
+            <div class="stat-label">Total Orders</div>
+          </div>
+        </div>
+      </div>
+      <div class="wallet-info">
+        <p><strong>Account Type:</strong> <span id="accountType">-</span></p>
+        <p><strong>Email:</strong> <span id="userEmail">-</span></p>
+        <p><strong>Wallet Address:</strong></p>
+        <div class="wallet-address" id="walletAddress">Not connected</div>
+      </div>
+    </div>
+
+    <!-- Completed Orders Section -->
+    <div class="orders-section">
+      <h2>📦 Order History</h2>
+      <div id="completedOrdersContainer">
+        <div class="empty-state">
+          <div class="empty-state-icon">🎉</div>
+          <p>No completed orders yet.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:3000/api';
+    let authToken = localStorage.getItem('authToken');
+    let currentUser = null;
+
+    // Check auth on load
+    if (!authToken) {
+      window.location.href = 'signin.html';
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadUserProfile();
+      await loadCompletedOrders();
+    });
+
+    // Load user profile
+    async function loadUserProfile() {
+      try {
+        const res = await fetch(`${API_BASE}/auth/me`, {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          currentUser = data.user;
+          document.getElementById('userName').textContent = 
+            data.user.firstName ? `${data.user.firstName} ${data.user.lastName}` : 
+            data.user.walletAddress?.substring(0, 8) + '...' ||
+            data.user.email;
+          
+          document.getElementById('userEmail').textContent = data.user.email || 'N/A';
+          document.getElementById('accountType').textContent = data.user.accountType || 'Customer';
+          document.getElementById('walletAddress').textContent = 
+            data.user.walletAddress || 'Not connected';
+          document.getElementById('ratingValue').textContent = (data.user.rating || 5.0).toFixed(1);
+          document.getElementById('totalCount').textContent = data.user.totalJobs || 0;
+        }
+      } catch (error) {
+        console.error('Load profile error:', error);
+      }
+    }
+
+    // Load completed orders
+    async function loadCompletedOrders() {
+      try {
+        const userId = currentUser.walletAddress || currentUser.email;
+        const res = await fetch(`${API_BASE}/jobs/my-jobs?userId=${encodeURIComponent(userId)}`, {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        const data = await res.json();
+
+        const container = document.getElementById('completedOrdersContainer');
+        const completedOrders = data.jobs?.filter(job => job.status === 'delivered') || [];
+
+        // Update completed count
+        document.getElementById('completedCount').textContent = completedOrders.length;
+
+        if (completedOrders.length > 0) {
+          container.innerHTML = completedOrders.map(job => `
+            <div class="order-card">
+              <div class="order-header">
+                <div>
+                  <div class="order-id">Order #${job._id.substring(0, 8)}</div>
+                  <div class="order-date">${new Date(job.deliveredAt || job.createdAt).toLocaleString()}</div>
+                </div>
+              </div>
+
+              <div class="order-details">
+                <div class="order-detail">
+                  <strong>📍 From</strong>
+                  ${job.lockerLocation}
+                </div>
+                <div class="order-detail">
+                  <strong>📦 Package</strong>
+                  ${job.packageSize || 'N/A'}
+                </div>
+                <div class="order-detail">
+                  <strong>📏 Distance</strong>
+                  ${job.distanceKm?.toFixed(2) || 'N/A'} km
+                </div>
+                <div class="order-detail">
+                  <strong>💰 Amount</strong>
+                  €${job.amount?.toFixed(2) || '0.00'}
+                </div>
+              </div>
+
+              ${job.gigWorkerRating ? `
+                <div class="rating-display">
+                  <strong>Your Rating</strong>
+                  <div class="rating-stars">${'⭐'.repeat(job.gigWorkerRating)}</div>
+                </div>
+              ` : ''}
+
+              ${job.contractTxHash ? `
+                <div class="transaction-box">
+                  <div class="transaction-label">📝 Transaction Signature</div>
+                  <div class="transaction-hash">
+                    <a href="https://sepolia.etherscan.io/tx/${job.contractTxHash}" 
+                       target="_blank" 
+                       class="transaction-link">
+                      ${job.contractTxHash}
+                    </a>
+                  </div>
+                  <div class="transaction-meta">
+                    Network: ${job.network || 'Sepolia'} • 
+                    ${job.tokenSymbol}: ${job.amountCrypto?.toFixed(6) || 'N/A'}
+                  </div>
+                </div>
+              ` : ''}
+            </div>
+          `).join('');
+        } else {
+          container.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">🎉</div>
+              <p>No completed orders yet. Keep delivering!</p>
+            </div>
+          `;
+        }
+      } catch (error) {
+        console.error('Load orders error:', error);
+      }
+    }
+
+    // Go back to dashboard
+    function goBack() {
+      const accountType = currentUser?.accountType;
+      if (accountType === 'gigWorker') {
+        window.location.href = 'gigworker-dashboard.html';
+      } else {
+        window.location.href = 'customer-dashboard.html';
+      }
+    }
+
+    // Logout
+    function logout() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('accountType');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

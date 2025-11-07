@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - ecodrop³</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --mint-green: #B8F4D4;
+      --dark-green: #4CAF50;
+      --text-dark: #2c3e50;
+      --text-light: #5a6c7d;
+      --white: #ffffff;
+      --light-bg: #f8f9fa;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--white);
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-dark);
+      flex: 1;
+    }
+
+    .logo sup {
+      color: var(--dark-green);
+      font-size: 0.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--dark-green);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--text-dark);
+      color: var(--text-dark);
+    }
+
+    .btn-outline:hover {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-primary {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--dark-green);
+    }
+
+    .pricing-hero {
+      background: var(--mint-green);
+      color: var(--text-dark);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .pricing-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-hero p {
+      font-size: 1.3rem;
+      opacity: 0.85;
+    }
+
+    .pricing-content {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .pricing-section {
+      margin-bottom: 4rem;
+    }
+
+    .pricing-section h2 {
+      font-size: 2.2rem;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 3px solid transparent;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--dark-green);
+    }
+
+    .pricing-card.popular {
+      border-color: var(--dark-green);
+      position: relative;
+    }
+
+    .pricing-card.popular::before {
+      content: "MOST POPULAR";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--dark-green);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .package-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .package-name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+
+    .package-size {
+      color: #666;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .base-price {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--dark-green);
+      margin-bottom: 0.5rem;
+    }
+
+    .price-note {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 2rem;
+    }
+
+    .features-list {
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .features-list li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #eee;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .features-list li:last-child {
+      border-bottom: none;
+    }
+
+    .features-list li::before {
+      content: "✓ ";
+      color: #4CAF50;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .calculator-section {
+      background: #f8f9fa;
+      padding: 3rem 2rem;
+      border-radius: 16px;
+      margin-top: 4rem;
+    }
+
+    .calculator-section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .calculator {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .calc-input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .calc-input-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .calc-input-group select,
+    .calc-input-group input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .calc-result {
+      background: var(--dark-green);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .calc-result h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .calc-result .total {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .info-box {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+    }
+
+    .info-box h3 {
+      color: #856404;
+      margin-bottom: 0.8rem;
+    }
+
+    .info-box p {
+      color: #856404;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">ecodrop<sup>3</sup></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-buttons">
+      <a href="signin.html" class="btn btn-outline">Sign In</a>
+      <a href="signup.html" class="btn btn-primary">Sign Up</a>
+    </div>
+  </nav>
+
+  <div class="pricing-hero">
+    <h1>Simple, Transparent Pricing</h1>
+    <p>Pay only for what you send. No hidden fees, no subscriptions.</p>
+  </div>
+
+  <div class="pricing-content">
+    <div class="pricing-section">
+      <h2>Choose Your Package Size</h2>
+      
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <div class="package-icon">📦</div>
+          <div class="package-name">Small</div>
+          <div class="package-size">Up to 2kg</div>
+          <div class="base-price">€1</div>
+          <div class="price-note">+ €1/km</div>
+          <ul class="features-list">
+            <li>Max dimensions: 30x20x15cm</li>
+            <li>Weight: up to 2kg</li>
+            <li>Secure locker pickup</li>
+            <li>Real-time tracking</li>
+            <li>€1 per kilometer</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card popular">
+          <div class="package-icon">📦</div>
+          <div class="package-name">Medium</div>
+          <div class="package-size">Up to 5kg</div>
+          <div class="base-price">€1</div>
+          <div class="price-note">+ €1.50/km</div>
+          <ul class="features-list">
+            <li>Max dimensions: 40x30x25cm</li>
+            <li>Weight: up to 5kg</li>
+            <li>Secure locker pickup</li>
+            <li>Real-time tracking</li>
+            <li>€1.50 per kilometer (1.5x)</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <div class="package-icon">📦</div>
+          <div class="package-name">Large</div>
+          <div class="package-size">Up to 10kg</div>
+          <div class="base-price">€1</div>
+          <div class="price-note">+ €2/km</div>
+          <ul class="features-list">
+            <li>Max dimensions: 60x40x40cm</li>
+            <li>Weight: up to 10kg</li>
+            <li>Secure locker pickup</li>
+            <li>Real-time tracking</li>
+            <li>€2 per kilometer (2x)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h3>💰 How Pricing Works</h3>
+      <p>
+        <strong>Total Cost = €1 Base Fee + (Distance × Per-km Rate) + 10% Platform Fee</strong><br><br>
+        • Small: €1 + (km × €1)<br>
+        • Medium: €1 + (km × €1.50) [1.5x multiplier]<br>
+        • Large: €1 + (km × €2) [2x multiplier]<br><br>
+        The 10% platform fee covers blockchain transaction costs and platform maintenance. 
+        Droppers receive 90% of the total delivery cost.
+      </p>
+    </div>
+
+    <div class="calculator-section">
+      <h2>Calculate Your Delivery Cost</h2>
+      <div class="calculator">
+        <div class="calc-input-group">
+          <label for="packageSize">Package Size</label>
+          <select id="packageSize" onchange="calculatePrice()">
+            <option value="small">Small (up to 2kg)</option>
+            <option value="medium" selected>Medium (up to 5kg)</option>
+            <option value="large">Large (up to 10kg)</option>
+          </select>
+        </div>
+
+        <div class="calc-input-group">
+          <label for="distance">Delivery Distance (km)</label>
+          <input type="number" id="distance" value="5" min="0.1" step="0.1" onchange="calculatePrice()">
+        </div>
+
+        <div class="calc-result">
+          <h3>Estimated Total Cost</h3>
+          <div class="total" id="totalCost">€0.00</div>
+          <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.9;">
+            Dropper earns: <span id="dropperEarnings">€0.00</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 3rem;">
+      <h3>🔐 Secure Payments with Cryptocurrency</h3>
+      <p>
+        All payments are made in Ethereum (ETH) on the Sepolia testnet. Funds are held in 
+        a smart contract escrow until successful delivery, protecting both customers and droppers. 
+        Instant, transparent, and secure.
+      </p>
+    </div>
+  </div>
+
+  <footer style="background: var(--text-dark); color: white; padding: 2rem; text-align: center; margin-top: 4rem;">
+    <p>&copy; 2025 ecodrop³. DIEM Hackathon 2025 Project.</p>
+  </footer>
+
+  <script>
+    const pricing = {
+      small: { base: 1, perKm: 1 },
+      medium: { base: 1, perKm: 1.5 },
+      large: { base: 1, perKm: 2 }
+    };
+
+    function calculatePrice() {
+      const size = document.getElementById('packageSize').value;
+      const distance = parseFloat(document.getElementById('distance').value) || 0;
+      
+      const baseFee = pricing[size].base;
+      const distanceFee = distance * pricing[size].perKm;
+      const subtotal = baseFee + distanceFee;
+      const platformFee = subtotal * 0.1;
+      const total = subtotal + platformFee;
+      const dropperEarnings = total - platformFee;
+
+      document.getElementById('totalCost').textContent = '€' + total.toFixed(2);
+      document.getElementById('dropperEarnings').textContent = '€' + dropperEarnings.toFixed(2);
+    }
+
+    // Calculate on page load
+    calculatePrice();
+
+    // Check if user is logged in on page load
+    const API_BASE = 'http://localhost:3000/api';
+    
+    document.addEventListener('DOMContentLoaded', async () => {
+      const authToken = localStorage.getItem('authToken');
+      
+      if (authToken) {
+        try {
+          const res = await fetch(`${API_BASE}/auth/me`, {
+            headers: { 'Authorization': `Bearer ${authToken}` }
+          });
+          const data = await res.json();
+          
+          if (data.success) {
+            // User is logged in, replace buttons with dashboard link
+            const navButtons = document.querySelector('.nav-buttons');
+            const dashboardUrl = data.user.role === 'gigworker' || data.user.role === 'both' 
+              ? 'gigworker-dashboard.html' 
+              : 'customer-dashboard.html';
+            
+            navButtons.innerHTML = `
+              <a href="${dashboardUrl}" class="btn btn-primary">📊 Go to Dashboard</a>
+              <button onclick="logout()" class="btn btn-outline">Logout</button>
+            `;
+          }
+        } catch (error) {
+          console.error('Auth check error:', error);
+        }
+      }
+    });
+    
+    function logout() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('accountType');
+      window.location.reload();
+    }
+  </script>
+</body>
+</html>

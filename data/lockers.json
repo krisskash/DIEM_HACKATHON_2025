@@ -1,0 +1,2069 @@
+[
+  {
+    "id": 1,
+    "name": "ACS Smartpoint Locker",
+    "address": "Tagiapiera 2, Athina 115 25, Greece",
+    "lat": 37.9968951,
+    "lng": 23.7805335,
+    "placeId": "ChIJJ2A9MwCZoRQRxV7Flqm7wQw",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 2,
+    "name": "ACS Smartpoint Koukaki",
+    "address": "Leof. Andrea Siggrou 62, Athina 117 42, Greece",
+    "lat": 37.9654476,
+    "lng": 23.7274414,
+    "placeId": "ChIJwWUy6Be9oRQRhVNp_vg6GHo",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.5,
+    "userRatingsTotal": 21
+  },
+  {
+    "id": 3,
+    "name": "Acs smart point",
+    "address": "Katechaki 75, Athina 115 25, Greece",
+    "lat": 37.9976013,
+    "lng": 23.7695271,
+    "placeId": "ChIJgw5Vh6KZoRQR-42kXG8Qcfg",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4,
+    "userRatingsTotal": 5
+  },
+  {
+    "id": 4,
+    "name": "ACS SMARTPOINT",
+    "address": "Tsounta 29, Athina 111 43, Greece",
+    "lat": 38.020868,
+    "lng": 23.7293522,
+    "placeId": "ChIJnaBxPQCjoRQRsUXdmpbgAEU",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.3,
+    "userRatingsTotal": 6
+  },
+  {
+    "id": 5,
+    "name": "ACS smartpoint",
+    "address": "Filolaou 27, Athina 116 33, Greece",
+    "lat": 37.966653,
+    "lng": 23.7525582,
+    "placeId": "ChIJ5757MwC9oRQR7J5UNlhF7Kc",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 6,
+    "name": "ACS smartpoint 24/7",
+    "address": "Ippokratous 125, Athina 114 72, Greece",
+    "lat": 37.98578,
+    "lng": 23.741472,
+    "placeId": "ChIJY2ATSgC9oRQRv5zCfzOb33U",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 7,
+    "name": "ACS SmartPoint",
+    "address": "Ilia Iliou 49, Athina 117 43, Greece",
+    "lat": 37.9583683,
+    "lng": 23.7324698,
+    "placeId": "ChIJN6s2OQC9oRQR3Pp8MUFRKq4",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 8,
+    "name": "ACS smartpoint 1 Βριλήσσια",
+    "address": "Anapafseos 14, Vrilissia 152 35, Greece",
+    "lat": 38.0439633,
+    "lng": 23.8435615,
+    "placeId": "ChIJ5wUt6w-ZoRQRjrgWWa8O-DQ",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3,
+    "userRatingsTotal": 31
+  },
+  {
+    "id": 9,
+    "name": "ACS SmartPoint",
+    "address": "Filolaou 185, Athina 116 31, Greece",
+    "lat": 37.9596231,
+    "lng": 23.7402955,
+    "placeId": "ChIJ853rUKm9oRQRhpfTjZ5R2iM",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.5,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 10,
+    "name": "ACS Smart point",
+    "address": "Dodekanisou 73, Athina 121 35, Greece",
+    "lat": 38.0166606,
+    "lng": 23.6885987,
+    "placeId": "ChIJs1kqAzijoRQR-d2FtA8X9PA",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.7,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 11,
+    "name": "ACS Smart Point Locker",
+    "address": "Trion Ierarchon 157, Athina 118 52, Greece",
+    "lat": 37.9674281,
+    "lng": 23.7099363,
+    "placeId": "ChIJ9ZrDWgC9oRQRiaLz1lDunos",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 12,
+    "name": "ACS Smart Point",
+    "address": "Mesogion 364, Ag. Paraskevi 153 41, Greece",
+    "lat": 38.01141459999999,
+    "lng": 23.8127854,
+    "placeId": "ChIJ_ULz2QOZoRQR1mtBNjOxrDk",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 13,
+    "name": "Acs smart point",
+    "address": "Thiseos 45, Kallithea 176 71, Greece",
+    "lat": 37.9618346,
+    "lng": 23.7112993,
+    "placeId": "ChIJe2zLdgC9oRQRmYxObR8vDP0",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 14,
+    "name": "ACS Smartpoint Locker Εθνική Άμυνα",
+    "address": "Leof. Mesogeion 158, 168, Papagos 156 69, Greece",
+    "lat": 37.9998954,
+    "lng": 23.7863791,
+    "placeId": "ChIJo0zsMACZoRQRtG7QP0A2mDI",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.7,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 15,
+    "name": "ACS Smartpoint",
+    "address": "Ethnarchou Makariou 35, Peristeri 121 31, Greece",
+    "lat": 38.0050086,
+    "lng": 23.7008277,
+    "placeId": "ChIJ1X5WzNijoRQRcq65DZfoy6w",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.5,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 16,
+    "name": "ACS Smartpoint",
+    "address": "Tzon Kennenty 105, Peristeri 121 36, Greece",
+    "lat": 38.00683840000001,
+    "lng": 23.6831102,
+    "placeId": "ChIJB-6dJDCjoRQRbUnXqr4rRVI",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.8,
+    "userRatingsTotal": 5
+  },
+  {
+    "id": 17,
+    "name": "Acs smart point",
+    "address": "Leof. Mesogeion 523, Ag. Paraskevi 153 43, Greece",
+    "lat": 38.01302159999999,
+    "lng": 23.8357307,
+    "placeId": "ChIJ8_bvZCOZoRQRqkaNpLek77I",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.3,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 18,
+    "name": "Acs smart point",
+    "address": "Ifigenias 18, Nea Ionia 141 22, Greece",
+    "lat": 38.0479923,
+    "lng": 23.7555609,
+    "placeId": "ChIJ_Z-0wR2joRQRP69GEHR0DU8",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.8,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 19,
+    "name": "Acs smart point",
+    "address": "Leof. Pentelis 76, Chalandri 152 34, Greece",
+    "lat": 38.0267975,
+    "lng": 23.811766,
+    "placeId": "ChIJrY2c8KiZoRQR5mBIPxG5l_Q",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.5,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 20,
+    "name": "ACS SMART POINT LOCKERS",
+    "address": "Theomitoros 48, Ag. Dimitrios 173 42, Greece",
+    "lat": 37.918765,
+    "lng": 23.7277594,
+    "placeId": "ChIJDUprdwC9oRQRVohg5QCor8I",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 21,
+    "name": "Acs smart point",
+    "address": "Leof. Irakliou 475, Iraklio 141 22, Greece",
+    "lat": 38.0602721,
+    "lng": 23.7727212,
+    "placeId": "ChIJQ96cKTqZoRQRCPTSIl2LjJI",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 22,
+    "name": "Acs smart point",
+    "address": "Leof. Pentelis 120-126, Vrilissia 152 38, Greece",
+    "lat": 38.043774,
+    "lng": 23.836302,
+    "placeId": "ChIJicxVyomZoRQRNyrQrs8NYAQ",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.5,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 23,
+    "name": "Acs smart point",
+    "address": "Entison, Pallini 153 51, Greece",
+    "lat": 38.0044288,
+    "lng": 23.8749705,
+    "placeId": "ChIJNeNzDe6boRQRemHCheN2p38",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.3,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 24,
+    "name": "Acs smart point",
+    "address": "Kleisthenous 33, Ag. Paraskevi 153 43, Greece",
+    "lat": 38.0133738,
+    "lng": 23.8431704,
+    "placeId": "ChIJh9jKHL2ZoRQRbhVSTAdZlLw",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 25,
+    "name": "Acs smart point",
+    "address": "Eantos 2α, Vrilissia 152 38, Greece",
+    "lat": 38.0380037,
+    "lng": 23.8273156,
+    "placeId": "ChIJBxgXSwCZoRQR-ZkE45VbNcU",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 26,
+    "name": "Acs smart point",
+    "address": "Konitsis 33, Vrilissia 152 35, Greece",
+    "lat": 38.0360923,
+    "lng": 23.8281895,
+    "placeId": "ChIJXWE1YACZoRQRydoVINHq-yM",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 27,
+    "name": "Acs smart point locker",
+    "address": "Leof. Pentelis 142, Chalandri 152 34, Greece",
+    "lat": 38.0328499,
+    "lng": 23.821571,
+    "placeId": "ChIJ3f60QACZoRQRGvVFKPqSdn0",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 28,
+    "name": "ACS Smartpoint Locker",
+    "address": "Chrisostomou Smirnis 117, Moschato 183 45, Greece",
+    "lat": 37.952982,
+    "lng": 23.6809936,
+    "placeId": "ChIJcXZmMwC9oRQRljactM7LGuE",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 29,
+    "name": "ACS Courier",
+    "address": "Petrou Ralli 36-38, Egaleo 122 41, Greece",
+    "lat": 37.97665569999999,
+    "lng": 23.6828787,
+    "placeId": "ChIJ07HImJO8oRQRqZLRlm171O8",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.7,
+    "userRatingsTotal": 2092
+  },
+  {
+    "id": 30,
+    "name": "ACS Locker",
+    "address": "Kon/nou Paleologou 25, Nea Smirni 171 22, Greece",
+    "lat": 37.944552,
+    "lng": 23.7107544,
+    "placeId": "ChIJ1QYoewC9oRQRTAE9VXzrs-g",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 31,
+    "name": "ACS Smartpoint Locker",
+    "address": "Priamou 244, Ilion 131 23, Greece",
+    "lat": 38.04411959999999,
+    "lng": 23.7059954,
+    "placeId": "ChIJt3pLdQCjoRQR1acLVOaF82E",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 1,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 32,
+    "name": "ACS Courier",
+    "address": "Pireos 193, Athina 118 53, Greece",
+    "lat": 37.970367,
+    "lng": 23.7034029,
+    "placeId": "ChIJr-O-AhG9oRQRaL1p8CwotGw",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.9,
+    "userRatingsTotal": 3637
+  },
+  {
+    "id": 33,
+    "name": "ACS Courier",
+    "address": "Filolaou 25, Athina 116 33, Greece",
+    "lat": 37.966713,
+    "lng": 23.75267,
+    "placeId": "ChIJUwSBZwa9oRQRpewCti1DuJY",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.3,
+    "userRatingsTotal": 229
+  },
+  {
+    "id": 34,
+    "name": "ACS Smartpoint Locker Μαρούσι (Λογιστικό γραφείο Δρίζος)",
+    "address": "Dim. Ralli 30, Marousi 151 24, Greece",
+    "lat": 38.0516814,
+    "lng": 23.8057217,
+    "placeId": "ChIJycttSgCZoRQRMPzSGot-BYQ",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 35,
+    "name": "Skroutz Smart Point",
+    "address": "Lenorman 191, Athina 104 42, Greece",
+    "lat": 37.997632,
+    "lng": 23.7097815,
+    "placeId": "ChIJR-MVt8mjoRQR8ejWzMT7Mb0",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.4,
+    "userRatingsTotal": 5
+  },
+  {
+    "id": 36,
+    "name": "Skroutz Point - Bazaar",
+    "address": "Ag. Anargiron 18, Agii Anargiri 135 61, Greece",
+    "lat": 38.0274469,
+    "lng": 23.7207487,
+    "placeId": "ChIJ6a6H9WGjoRQRAbZHUS2TnMo",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 37,
+    "name": "Skroutz Point",
+    "address": "Leof. Kifisias 144, Athina 115 25, Greece",
+    "lat": 37.9980493,
+    "lng": 23.7697244,
+    "placeId": "ChIJZ46sBBWZoRQR81KdTI6YvpQ",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3,
+    "userRatingsTotal": 8
+  },
+  {
+    "id": 38,
+    "name": "Skroutz point",
+    "address": "Pinelopis Delta 16, Athina 11skr5 25, Greece",
+    "lat": 37.9988775,
+    "lng": 23.7746331,
+    "placeId": "ChIJixcsZgCZoRQRiJZ1QHpyJCA",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 39,
+    "name": "Skroutz Smart point",
+    "address": "Leof. Athinon 93-97, Athina 104 47, Greece",
+    "lat": 37.9907038,
+    "lng": 23.701984,
+    "placeId": "ChIJEZ5jwcq9oRQRIepGj_Q_mWM",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 40,
+    "name": "Skroutz point",
+    "address": "Pl. Monastirakiou 2, Athina 105 55, Greece",
+    "lat": 37.9763556,
+    "lng": 23.7262474,
+    "placeId": "ChIJTd-pZAC9oRQR9bcgYm0r8g0",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 41,
+    "name": "Skroutz Point",
+    "address": "Pireos 8, Moschato 183 46, Greece",
+    "lat": 37.9549216,
+    "lng": 23.6751768,
+    "placeId": "ChIJ_0oZmdi9oRQRch5-98R_qYM",
+    "types": [
+      "store",
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 1.4,
+    "userRatingsTotal": 9
+  },
+  {
+    "id": 42,
+    "name": "Skroutz point",
+    "address": "Solonos 60, Athina 106 72, Greece",
+    "lat": 37.9806979,
+    "lng": 23.7366162,
+    "placeId": "ChIJL7Ghasq9oRQRc4s7CASHfso",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.8,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 43,
+    "name": "Skroutz point",
+    "address": "Λεωφ. Αλεξάνδρας 217 &, Eslin, Athina 115 23, Greece",
+    "lat": 37.98701630000001,
+    "lng": 23.7601816,
+    "placeId": "ChIJbW5-4LijoRQRXbEi2U5n67k",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.3,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 44,
+    "name": "Skroutz Point",
+    "address": "Filolaou 185, Athina 116 31, Greece",
+    "lat": 37.9596231,
+    "lng": 23.7402955,
+    "placeId": "ChIJYyxKhA-9oRQRSMuWl-7IrKU",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 45,
+    "name": "Skroutz Point",
+    "address": "Agiou Meletiou 61, Athina 112 57, Greece",
+    "lat": 38.0000624,
+    "lng": 23.7330494,
+    "placeId": "ChIJd7ybyyyjoRQRnrMObtJeKyQ",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.6,
+    "userRatingsTotal": 7
+  },
+  {
+    "id": 46,
+    "name": "Skroutz Point",
+    "address": "Kassomouli 108, Athina 117 44, Greece",
+    "lat": 37.956761,
+    "lng": 23.7338599,
+    "placeId": "ChIJt1wdKQC9oRQRpS9aDi-pTHw",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 47,
+    "name": "Skroutz point",
+    "address": "Leof. Mesogeion 227, Athina 115 25, Greece",
+    "lat": 37.9973226,
+    "lng": 23.7818324,
+    "placeId": "ChIJa2oFXACZoRQR8QSWpZSAgkU",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 48,
+    "name": "Skroutz Point",
+    "address": "Ariadnis 9, Athina 113 64, Greece",
+    "lat": 38.00621090000001,
+    "lng": 23.7458472,
+    "placeId": "ChIJS3DscBSjoRQRE15OicYyyxQ",
+    "types": [
+      "store",
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 49,
+    "name": "Skroutz point",
+    "address": "Trifillias 67, Athina 115 24, Greece",
+    "lat": 37.9957825,
+    "lng": 23.7623629,
+    "placeId": "ChIJvwo9GACjoRQRNAxZue2C_U8",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 50,
+    "name": "Skroutz point",
+    "address": "Katechaki 52, Athina 115 25, Greece",
+    "lat": 37.9959798,
+    "lng": 23.7722619,
+    "placeId": "ChIJKQLMQgCZoRQRd4vrlJaZjyc",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 51,
+    "name": "Skroutz Point - Μικρή Αγορά",
+    "address": "Dimosthenous 39, Nea Ionia 142 32, Greece",
+    "lat": 38.0292864,
+    "lng": 23.7507688,
+    "placeId": "ChIJF45CjfSjoRQR52KDRKrPODA",
+    "types": [
+      "storage",
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 52,
+    "name": "Skroutz Point",
+    "address": "Spetson 53, Peristeri 121 32, Greece",
+    "lat": 38.0129569,
+    "lng": 23.7061606,
+    "placeId": "ChIJlXt_zYSjoRQR2KSa5xzvjIE",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 53,
+    "name": "Skroutz Point",
+    "address": "Mikras Asias 12, Athina 115 27, Greece",
+    "lat": 37.9807162,
+    "lng": 23.7601031,
+    "placeId": "ChIJ0VHXKgC9oRQRf-jlQnc9xeQ",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 54,
+    "name": "Skroutz Point",
+    "address": "Kousianofski 14, Athina 115 25, Greece",
+    "lat": 37.9947215,
+    "lng": 23.7733065,
+    "placeId": "ChIJwxDkUKmZoRQRMftFkerip68",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.3,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 55,
+    "name": "Skroutz Point Locker Store Zinodotou",
+    "address": "Zinodotou 1, Athina 116 34, Greece",
+    "lat": 37.96801,
+    "lng": 23.7500859,
+    "placeId": "ChIJ0Za3HwC9oRQRSf6bHpDn8tM",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 56,
+    "name": "skroutz",
+    "address": "Evridamantos 24, Athina 117 45, Greece",
+    "lat": 37.956291,
+    "lng": 23.7177261,
+    "placeId": "ChIJpyIWcQC9oRQR9fUEYzBjbhg",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2,
+    "userRatingsTotal": 25
+  },
+  {
+    "id": 57,
+    "name": "Lockers4all Monastiraki",
+    "address": "Athinas 2, Athina 105 51, Greece",
+    "lat": 37.9768544,
+    "lng": 23.7263274,
+    "placeId": "ChIJQdPQIyO9oRQRv910H6w_EcI",
+    "types": [
+      "storage",
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4,
+    "userRatingsTotal": 315
+  },
+  {
+    "id": 58,
+    "name": "Lockers4all Koukaki (Dimitrakopoulou str.)",
+    "address": "Dimitrakopoulou 29, Athina 117 42, Greece",
+    "lat": 37.9660133,
+    "lng": 23.7270471,
+    "placeId": "ChIJzXtvGpq9oRQROTrcazAu10s",
+    "types": [
+      "storage",
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.8,
+    "userRatingsTotal": 60
+  },
+  {
+    "id": 59,
+    "name": "Lockers4all Metaxourgeio",
+    "address": "Viktoros Ougko 31, Athina 104 37, Greece",
+    "lat": 37.9863413,
+    "lng": 23.7227544,
+    "placeId": "ChIJF0D4BxS9oRQR3oY7MFUYEpU",
+    "types": [
+      "storage",
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.9,
+    "userRatingsTotal": 17
+  },
+  {
+    "id": 60,
+    "name": "Skroutz Point Everest Αθήνα (Ευτυχίδου)",
+    "address": "Eftichidou 49, Athina 116 34, Greece",
+    "lat": 37.9676706,
+    "lng": 23.7495473,
+    "placeId": "ChIJ54iXRwC9oRQR3B4syhOuUas",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 61,
+    "name": "Athens Lockers Lycabettus",
+    "address": "Marasli 43, Athina 106 76, Greece",
+    "lat": 37.9792255,
+    "lng": 23.7458922,
+    "placeId": "ChIJb1FHM4e9oRQRAiZKCz2xid0",
+    "types": [
+      "storage",
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 42
+  },
+  {
+    "id": 62,
+    "name": "Skroutz Point Optical World (Νέο Ψυχικό)",
+    "address": "25is Martiou 24, Neo Psichiko 154 51, Greece",
+    "lat": 38.0052727,
+    "lng": 23.785605,
+    "placeId": "ChIJscQ2jxSZoRQRlZaRNhwNvO8",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 63,
+    "name": "Skroutz point Cityzen Pagrati",
+    "address": "Tideos 16, Athina 116 35, Greece",
+    "lat": 37.96602499999999,
+    "lng": 23.7456691,
+    "placeId": "ChIJlwE3QAC9oRQR9g_29yUNZk0",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 64,
+    "name": "Skroutz",
+    "address": "Alekou Panagouli 91, Athina 142 34, Greece",
+    "lat": 38.0437365,
+    "lng": 23.7601693,
+    "placeId": "ChIJuURGVnSioRQRnIc6m6XUHQo",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4,
+    "userRatingsTotal": 11995
+  },
+  {
+    "id": 65,
+    "name": "Skroutz point",
+    "address": "Iera Odos 42, Athina 104 35, Greece",
+    "lat": 37.9804577,
+    "lng": 23.713082,
+    "placeId": "ChIJPdIeXQC9oRQRTf3jIV08isU",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 66,
+    "name": "Skroutz point",
+    "address": "Sevastoupoleos 150, Athina 115 26, Greece",
+    "lat": 37.9943639,
+    "lng": 23.7691046,
+    "placeId": "ChIJwW8BV_KZoRQRRfrlXT4YQm0",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 67,
+    "name": "Skroutz pick up point",
+    "address": "Akti Posidonos 18, Pireas 185 31, Greece",
+    "lat": 37.9450479,
+    "lng": 23.6433282,
+    "placeId": "ChIJZ_GXoti7oRQRbAdiFEaFu_k",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 68,
+    "name": "Skroutz Last Mile",
+    "address": "Agias Annis 7, Athina 118 55, Greece",
+    "lat": 37.9867817,
+    "lng": 23.6942842,
+    "placeId": "ChIJFa6PBQC9oRQRg-IxcIlA20k",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2,
+    "userRatingsTotal": 59
+  },
+  {
+    "id": 69,
+    "name": "Skroutz pick up point",
+    "address": "Leof. Athinon-Pireos 133, Ag. Ioannis Rentis 182 33, Greece",
+    "lat": 37.9531988,
+    "lng": 23.6684269,
+    "placeId": "ChIJCw3Z2P29oRQRkH1xZ_T-dvQ",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 1,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 70,
+    "name": "BOX NOW store",
+    "address": "Ippokratous 52-54, Athina 106 80, Greece",
+    "lat": 37.983637,
+    "lng": 23.7374765,
+    "placeId": "ChIJ5TNx7A69oRQRMRwGw4DAois",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.4,
+    "userRatingsTotal": 21
+  },
+  {
+    "id": 71,
+    "name": "Box Now locker",
+    "address": "Prigkiponnison 10, Athina 114 74, Greece",
+    "lat": 37.995493,
+    "lng": 23.7489504,
+    "placeId": "ChIJDzdY0qGjoRQRw83RziE63JE",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.2,
+    "userRatingsTotal": 20
+  },
+  {
+    "id": 72,
+    "name": "Box now locker",
+    "address": "Σεβαστουπόλεως 150, Αθήνα, Nikita 1, & 115 26, Greece",
+    "lat": 37.994393,
+    "lng": 23.7692614,
+    "placeId": "ChIJ4UpHwjCZoRQRunx8sx1VlDk",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 1,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 73,
+    "name": "Box now lockers",
+    "address": "Keas 79, Athina 112 55, Greece",
+    "lat": 38.010072,
+    "lng": 23.7421869,
+    "placeId": "ChIJ2XaqOgCjoRQRkMP3Vt37rr8",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.1,
+    "userRatingsTotal": 16
+  },
+  {
+    "id": 74,
+    "name": "Box Now Locker",
+    "address": "Σφακίων, Leof. Athinon &, Peristeri, Greece",
+    "lat": 37.9973866,
+    "lng": 23.6935008,
+    "placeId": "ChIJ_wN1Oqa9oRQRcX0DG_ddals",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.8,
+    "userRatingsTotal": 5
+  },
+  {
+    "id": 75,
+    "name": "BoxNow locker",
+    "address": "Leof. Athinon 108, Athina 104 42, Greece",
+    "lat": 37.9902734,
+    "lng": 23.7037396,
+    "placeId": "ChIJqdGXZ_e9oRQRhkP2TE_u7Ks",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.6,
+    "userRatingsTotal": 50
+  },
+  {
+    "id": 76,
+    "name": "BOX NOW Locker",
+    "address": "Leof. Mesogeion 195, Athina 115 25, Greece",
+    "lat": 37.9946548,
+    "lng": 23.777453,
+    "placeId": "ChIJe_V0FDqZoRQRAnjKg6yTYeM",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 77,
+    "name": "Box now locker",
+    "address": "Leof. Mesogeion 237, Athina 154 51, Greece",
+    "lat": 38.0015238,
+    "lng": 23.7880916,
+    "placeId": "ChIJs_zc6LKZoRQRLe7UeUGC-Aw",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 1,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 78,
+    "name": "Box now locker",
+    "address": "Sevastoupoleos 135, Athina 115 26, Greece",
+    "lat": 37.99555230000001,
+    "lng": 23.769234,
+    "placeId": "ChIJPdDyAWiZoRQRp6dQfl2ILPI",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 79,
+    "name": "Box now locker",
+    "address": "Sevastoupoleos 146, Athina 115 26, Greece",
+    "lat": 37.9939915,
+    "lng": 23.7690373,
+    "placeId": "ChIJudC5Qk6ZoRQR42AyHFAqyj0",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 80,
+    "name": "Box Now Locker",
+    "address": "Karpenisiou 25, Peristeri 121 31, Greece",
+    "lat": 38.0086148,
+    "lng": 23.6888711,
+    "placeId": "ChIJSx5w1zKjoRQRD08PNRW0KjI",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 1.7,
+    "userRatingsTotal": 6
+  },
+  {
+    "id": 81,
+    "name": "BOX NOW Locker",
+    "address": "Geor. Zografou 64, Zografou 157 72, Greece",
+    "lat": 37.973603,
+    "lng": 23.7744048,
+    "placeId": "ChIJQ-GdRgCXoRQRPCVQ_0oM9dk",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 82,
+    "name": "BOX NOW STORE",
+    "address": "Frinis 46, Athina 116 33, Greece",
+    "lat": 37.9642641,
+    "lng": 23.7500012,
+    "placeId": "ChIJ3avzNgC9oRQR0XQfQMGj0Qk",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 83,
+    "name": "Box now Locker",
+    "address": "Tagiapiera 2, Athina 115 25, Greece",
+    "lat": 37.9969776,
+    "lng": 23.7806002,
+    "placeId": "ChIJkZKYQgCZoRQRyke2UhTB2HQ",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 84,
+    "name": "Box now locker(ΑΒ Βασιλοπουλος)",
+    "address": "Soulioton 1, Athina 117 44, Greece",
+    "lat": 37.9550052,
+    "lng": 23.7254451,
+    "placeId": "ChIJ1aTZLAC9oRQRY9lpBbzfrf4",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 85,
+    "name": "BOX NOW LOCKER 24/7",
+    "address": "Leof. Vouliagmenis 39, Athina 117 43, Greece",
+    "lat": 37.9648619,
+    "lng": 23.7332389,
+    "placeId": "ChIJyVlNdgC9oRQRwlmSBd8pmo8",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.8,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 86,
+    "name": "Box Now Locker",
+    "address": "Φιλικών, Prokopiou &, Peristeri, Greece",
+    "lat": 38.0019065,
+    "lng": 23.6945795,
+    "placeId": "ChIJATUhHUKjoRQRmTOhq_Jxauo",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 87,
+    "name": "BOX NOW Locker",
+    "address": "Sarantaporou 12, Cholargos 155 61, Greece",
+    "lat": 38.0014578,
+    "lng": 23.7905833,
+    "placeId": "ChIJd0irvP6ZoRQRXrNcAloQtvA",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.8,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 88,
+    "name": "BOX NOW",
+    "address": "16, Vrastovou, Laiou και, Athina 115 24, Greece",
+    "lat": 37.9915425,
+    "lng": 23.7589243,
+    "placeId": "ChIJee5LBQCjoRQRdGRRDfBXJKA",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.1,
+    "userRatingsTotal": 30
+  },
+  {
+    "id": 89,
+    "name": "BOX NOW locker",
+    "address": "Leof. Kifisou 94, Athina 122 41, Greece",
+    "lat": 37.9824064,
+    "lng": 23.6806021,
+    "placeId": "ChIJXbeMZu69oRQRQSVK1LGwaLY",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 90,
+    "name": "Box now",
+    "address": "Leof. Vouliagmenis 69, Athina 117 43, Greece",
+    "lat": 37.9625481,
+    "lng": 23.7340333,
+    "placeId": "ChIJSZsCtIy9oRQRVxDfoxywe2I",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.2,
+    "userRatingsTotal": 90
+  },
+  {
+    "id": 91,
+    "name": "BOX NOW",
+    "address": "Akadimias 66, Athina 106 79, Greece",
+    "lat": 37.9828345,
+    "lng": 23.7333588,
+    "placeId": "ChIJFcX7OwC9oRQRlOKpkiaeKoY",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.8,
+    "userRatingsTotal": 20
+  },
+  {
+    "id": 92,
+    "name": "BOX NOW",
+    "address": "Imittou 10, Kesariani 161 21, Greece",
+    "lat": 37.9712019,
+    "lng": 23.7563197,
+    "placeId": "ChIJ09k29oe9oRQRiD13iyVX2JA",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.2,
+    "userRatingsTotal": 26
+  },
+  {
+    "id": 93,
+    "name": "BOX NOW",
+    "address": "Friderikou Smith 26, Athina 117 45, Greece",
+    "lat": 37.9568281,
+    "lng": 23.7212813,
+    "placeId": "ChIJ1-5RVQC9oRQRB3dF4qYFgno",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.8,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 94,
+    "name": "BOX NOW",
+    "address": "Anapafseos 34, Athina 121 35, Greece",
+    "lat": 38.0202438,
+    "lng": 23.6871529,
+    "placeId": "ChIJ4c6SSV6joRQRPg3h_V1DsS4",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.6,
+    "userRatingsTotal": 11
+  },
+  {
+    "id": 95,
+    "name": "BOX NOW",
+    "address": "Iera Odos 26, Athina 104 35, Greece",
+    "lat": 37.97984700000001,
+    "lng": 23.7147583,
+    "placeId": "ChIJv30mCgC9oRQREBpX_mXjS4Q",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3,
+    "userRatingsTotal": 6
+  },
+  {
+    "id": 96,
+    "name": "BOX NOW",
+    "address": "Amintoros 8, Peristeri 121 35, Greece",
+    "lat": 38.0253177,
+    "lng": 23.6903134,
+    "placeId": "ChIJPynO3-WjoRQRdABbGR1_SfU",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 2.7,
+    "userRatingsTotal": 45
+  },
+  {
+    "id": 97,
+    "name": "Box now",
+    "address": "Agia Paraskevi 153 41, Greece",
+    "lat": 38.0091337,
+    "lng": 23.8064158,
+    "placeId": "ChIJCUIvdJeZoRQRHGknr-9VGjE",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 1.9,
+    "userRatingsTotal": 30
+  },
+  {
+    "id": 98,
+    "name": "BOX NOW",
+    "address": "Nik. Plastira 107, Agii Anargiri 135 61, Greece",
+    "lat": 38.0243109,
+    "lng": 23.7223854,
+    "placeId": "ChIJ204inN-joRQR3Es84Y3rDyo",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.5,
+    "userRatingsTotal": 8
+  },
+  {
+    "id": 99,
+    "name": "BOX Food Delivery",
+    "address": "Leof. Kifisias 99, Marousi 151 24, Greece",
+    "lat": 38.0449638,
+    "lng": 23.8042803,
+    "placeId": "ChIJ12LlufuZoRQRgKD05Ri0BSI",
+    "types": [
+      "meal_delivery",
+      "point_of_interest",
+      "food",
+      "establishment"
+    ],
+    "rating": 2.5,
+    "userRatingsTotal": 841
+  },
+  {
+    "id": 100,
+    "name": "BOXNOW",
+    "address": "Kapodistriou 38, Athina 104 32, Greece",
+    "lat": 37.9867825,
+    "lng": 23.728316,
+    "placeId": "ChIJt2VObAC9oRQRW-oIAKZzPp0",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 101,
+    "name": "BOX NOW HQ",
+    "address": "Geor. Papandreou 141, Metamorfosi 144 52, Greece",
+    "lat": 38.0670626,
+    "lng": 23.7675312,
+    "placeId": "ChIJ518XzsGfoRQRONERBERU-S8",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.3,
+    "userRatingsTotal": 1008
+  },
+  {
+    "id": 102,
+    "name": "BoxNow 21",
+    "address": "Kassiopis 3, Imittos 172 37, Greece",
+    "lat": 37.9502573,
+    "lng": 23.7417859,
+    "placeId": "ChIJMxkn2169oRQR_CWu_YQwhog",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.2,
+    "userRatingsTotal": 5
+  },
+  {
+    "id": 103,
+    "name": "Boxnow Locker",
+    "address": "Γεωργίου Βλάχου, Friderikou Tsentner &, Athina 115 25, Greece",
+    "lat": 37.9971391,
+    "lng": 23.7767155,
+    "placeId": "ChIJD3dEUQCZoRQRd4Br-GGZBpY",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 104,
+    "name": "BoxNow θυριδες",
+    "address": "Imittou 45, Cholargos 155 61, Greece",
+    "lat": 37.9973616,
+    "lng": 23.7976078,
+    "placeId": "ChIJHTadHwCZoRQRQtZT95nq2ws",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 105,
+    "name": "Boxnow locker",
+    "address": "Leof. Athinon-Pireos 86, Pireas 185 47, Greece",
+    "lat": 37.9528971,
+    "lng": 23.6719094,
+    "placeId": "ChIJe56HVwC9oRQRuhN0XoUMUx8",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 106,
+    "name": "BOX NOW",
+    "address": "Achaias 11523, Athina 115 23, Greece",
+    "lat": 37.9925691,
+    "lng": 23.7618269,
+    "placeId": "ChIJIR7dSQCjoRQRRg3Ye8m_zEY",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 1,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 107,
+    "name": "DHL Service Point Locker (BOX NOW Locker 24/7 Φωτοτυπικές Εργασίες Σπανού - Αθήνα)",
+    "address": "Pentelis 3, Athina 105 57, Greece",
+    "lat": 37.9749102,
+    "lng": 23.7318264,
+    "placeId": "ChIJ2VTNJci9oRQRq_tRymRVZME",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 108,
+    "name": "Box Now",
+    "address": "Makedonias 5, Nea Ionia 142 32, Greece",
+    "lat": 38.0328205,
+    "lng": 23.750388,
+    "placeId": "ChIJLeAbWQCjoRQRqWnfMHuWbIA",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.7,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 109,
+    "name": "DHL Service Point",
+    "address": "Filellinon 28, Athina 105 58, Greece",
+    "lat": 37.9722221,
+    "lng": 23.7332436,
+    "placeId": "ChIJ9crJABa9oRQRChOzekMZgAE",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.5,
+    "userRatingsTotal": 1198
+  },
+  {
+    "id": 110,
+    "name": "DHL Service Point Locker (BOX NOW LOCKER 24/7 Prima Pita)",
+    "address": "Prima pita, Akadimias 66, Athina 106 79, Greece",
+    "lat": 37.982856,
+    "lng": 23.7334241,
+    "placeId": "ChIJ556Hg4G9oRQRPzk-59pravA",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 111,
+    "name": "DHL Service Point (DHL SERVICE POINT)",
+    "address": "Katechaki 46, Athina 115 25, Greece",
+    "lat": 37.9955459,
+    "lng": 23.7728063,
+    "placeId": "ChIJJVm_cw-ZoRQR8Vy6PtHcYew",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.6,
+    "userRatingsTotal": 144
+  },
+  {
+    "id": 112,
+    "name": "DHL Service Point (Clever Point ΤΟ ΜΕΓΑΛΟ ΠΕΡΙΠΤΕΡΟ)",
+    "address": "Pl. Mesologgiou 2 - 4, Athina 116 33, Greece",
+    "lat": 37.9682161,
+    "lng": 23.7488201,
+    "placeId": "ChIJrSD_qd-9oRQRkr7JBfR-91Y",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.2,
+    "userRatingsTotal": 5
+  },
+  {
+    "id": 113,
+    "name": "DHL Service Point Locker (BOX NOW LOCKER 24/7 REVOIL Gas Station)",
+    "address": "REVOIL Αττική, Domokou 10, Athina 104 40, Greece",
+    "lat": 37.994418,
+    "lng": 23.7214847,
+    "placeId": "ChIJieCukp69oRQRYr9kw9zasQ8",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3,
+    "userRatingsTotal": 4
+  },
+  {
+    "id": 114,
+    "name": "DHL Service Point Locker (BOX NOW LOCKER 24/7 Papoulias Print Αθήνα)",
+    "address": "Solonos 112, Athina 106 81, Greece",
+    "lat": 37.9839947,
+    "lng": 23.7339512,
+    "placeId": "ChIJfTPd4tO9oRQRAnumTFnR7Ck",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 115,
+    "name": "DHL Service Point",
+    "address": "28is Oktovriou 103, Athina 112 51, Greece",
+    "lat": 37.9957763,
+    "lng": 23.7321004,
+    "placeId": "ChIJEzh73QijoRQR7K4nsgS6DnQ",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.1,
+    "userRatingsTotal": 111
+  },
+  {
+    "id": 116,
+    "name": "DHL Service Point Locker (BOX NOW LOCKER 24/7 AB Super Market)",
+    "address": "ΑΒ Α.Τ. Παγκρατίου, Σπ. Μερκούρη 38, Athina 116 34, Greece",
+    "lat": 37.971809,
+    "lng": 23.747649,
+    "placeId": "ChIJ7-MGlTW9oRQRmFasW2SCK44",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 117,
+    "name": "DHL Service Point Locker (BOX NOW LOCKER 24/7 AB Super Market)",
+    "address": "ΑΒ Μετρό Αγίου Νικολάου Φιλής 245 &, Olimpias 27, Athina 112 53, Greece",
+    "lat": 38.0060764,
+    "lng": 23.730476,
+    "placeId": "ChIJXdiVF56joRQRaDTgVYhWuUM",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 1,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 118,
+    "name": "DHL Service Point Locker (BOX NOW Locker 24/7 Aegean - Αθήνα)",
+    "address": "Leof. Athinon 110, Athina 104 42, Greece",
+    "lat": 37.99128520000001,
+    "lng": 23.7024819,
+    "placeId": "ChIJoTzt8dq9oRQRtfvEIZowsvI",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 119,
+    "name": "DHL Service Point Locker (BOX NOW Locker 24/7 Public - Σύνταγμα)",
+    "address": "Karagiorgi Servias 1, Athina 105 63, Greece",
+    "lat": 37.9762766,
+    "lng": 23.7335868,
+    "placeId": "ChIJh50V2YC9oRQRYLY8v8ZP1dY",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 120,
+    "name": "DHL Service Point Locker (BOX NOW Locker 24/7 Πολυκατοικία Καποδιστρίου - Αθήνα)",
+    "address": "Kapodistriou 38, Athina 104 32, Greece",
+    "lat": 37.98676409999999,
+    "lng": 23.7284218,
+    "placeId": "ChIJDYnwaWq9oRQRsiSWyXVOSxU",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 121,
+    "name": "DHL Service Point Locker (BOX NOW Locker 24/7 Village Station - Αθήνα)",
+    "address": "Gousiou 7, Athina 104 45, Greece",
+    "lat": 38.0100776,
+    "lng": 23.721647,
+    "placeId": "ChIJ4XQeEwejoRQRsqIeVZ7LIwg",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 122,
+    "name": "DHL Service Point Locker (BOX NOW Locker 24/7 24hr Parking Σπετσών)",
+    "address": "Spetson 105-107, Athina 113 63, Greece",
+    "lat": 38.001021,
+    "lng": 23.7419223,
+    "placeId": "ChIJSbCEEWqjoRQRJ_x6YxnDCaY",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.4,
+    "userRatingsTotal": 5
+  },
+  {
+    "id": 123,
+    "name": "DHL Service Point (Clever Point ΦΑΡΜΑΚΕΙΟ ΜΑΛΑΦΕΚΑ - ΦΙΛΛΙΠΑΚΗ)",
+    "address": "Mavrommateon 14, Athina 106 82, Greece",
+    "lat": 37.9910354,
+    "lng": 23.7320597,
+    "placeId": "ChIJxWel2Lq9oRQRg0Ciia3esYI",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.1,
+    "userRatingsTotal": 9
+  },
+  {
+    "id": 124,
+    "name": "DHL Service Point (Clever Point ΟΠΑΠ ΚΑΠΕΛΛΕΣ ΔΗΜΗΤΡΙΟΣ)",
+    "address": "Chalkokondili 9, Athina 106 77, Greece",
+    "lat": 37.9857639,
+    "lng": 23.7302023,
+    "placeId": "ChIJz6pxE9i9oRQRES_WNrQrsz0",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.4,
+    "userRatingsTotal": 8
+  },
+  {
+    "id": 125,
+    "name": "DHL Service Point Locker (BOX NOW LOCKER 24/7 Είσοδος Πανεπιστημιούπολης)",
+    "address": "Είσοδος Πανεπιστημιούπολης Οδός Αφών Τσάφου (Είσοδος Παν/πολης, Tsafou, Kesariani 161 21, Greece",
+    "lat": 37.971634,
+    "lng": 23.758381,
+    "placeId": "ChIJ8x-P_oO9oRQRjsq5foPIaTU",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 126,
+    "name": "DHL Service Point Locker (BOX NOW LOCKER 24/7 BP)",
+    "address": "BP, Kallirrois 49, Athina 117 43, Greece",
+    "lat": 37.96371,
+    "lng": 23.72697,
+    "placeId": "ChIJA6anVjS9oRQRq9pxOy_VX_o",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 127,
+    "name": "DHL Service Point Locker (BOX NOW LOCKER 24/7 ΕΤΕΚΑ Gas Station)",
+    "address": "ΕΤΕΚΑ Πλατεία Ανδ. Συγγρού, 25is Martiou 1, Tavros 185 43, Greece",
+    "lat": 37.94085159999999,
+    "lng": 23.7267639,
+    "placeId": "ChIJ9RWD7_W7oRQRquoDRKlFKN4",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 128,
+    "name": "DHL Service Point Locker (BOX NOW Locker 24/7 BOX NOW - Ιπποκράτους Store)",
+    "address": "Ippokratous 52-54, Athina 106 80, Greece",
+    "lat": 37.9836478,
+    "lng": 23.7374989,
+    "placeId": "ChIJcy6ATpK9oRQRt0uWOqXshLI",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 129,
+    "name": "DHL Service Point Locker - BOX NOW Locker 24/7 Σταθμός ΗΣΑΠ - Αττική (Σκάλες)",
+    "address": "Liosion 161, Athina 104 46, Greece",
+    "lat": 37.9995335,
+    "lng": 23.7229492,
+    "placeId": "ChIJR1W-XlqjoRQRmGQ4YhsKxPA",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 130,
+    "name": "DHL Service Point Locker (BOX NOW LOCKER 24/7 Galazoula Αθήνα)",
+    "address": "Sevastoupoleos 150, Athina 115 26, Greece",
+    "lat": 37.994944,
+    "lng": 23.7693353,
+    "placeId": "ChIJ_VCR2iKZoRQRK6bSOftcW30",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 131,
+    "name": "DHL Service Point Locker (BOX NOW Locker 24/7 Parking Σαλούρος - Άγιος Ελευθέριος)",
+    "address": "Αχρίδος, Samara &, 111 44, Greece",
+    "lat": 38.0138432,
+    "lng": 23.731209,
+    "placeId": "ChIJv0Iz71ajoRQR7mtTNHaxpAQ",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 132,
+    "name": "DHL Service Point Locker (BOX NOW Locker 24/7 Literature House)",
+    "address": "Ioánnou Drosopoúlou 67, Athina 112 57, Greece",
+    "lat": 38.0006268,
+    "lng": 23.7344998,
+    "placeId": "ChIJB0X7N-ajoRQRg57rFBF9_1c",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 133,
+    "name": "DHL Service Point Locker (BOX NOW LOCKER 24/7 Τα καλούδια Νέος Κόσμος)",
+    "address": "Mitrou Sarkoudinou 145, Athina 117 44, Greece",
+    "lat": 37.9503804,
+    "lng": 23.7215151,
+    "placeId": "ChIJF-WrUQK9oRQRbN4Es-mg7Wk",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 134,
+    "name": "DHL Service Point Locker (BOX NOW Locker 24/7 BP - Ροβέρτου Γκάλλι)",
+    "address": "Rovertou Galli 11, Athina 117 42, Greece",
+    "lat": 37.9685665,
+    "lng": 23.7260825,
+    "placeId": "ChIJ3WbtEPC9oRQR8NaplVFHcdY",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 135,
+    "name": "DHL Service Point Locker (BOX NOW LOCKER 24/7 Κλεοπάτρα)",
+    "address": "Κλεοπάτρα, Mark. Mpotsari 12, Athina 145 61, Greece",
+    "lat": 37.9662488,
+    "lng": 23.7237054,
+    "placeId": "ChIJvXuil529oRQRnZpUr94imDQ",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 1,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 136,
+    "name": "DHL Service Point (Clever Point Vivliagora Athens)",
+    "address": "Tralleon 61, Athina 111 42, Greece",
+    "lat": 38.0226605,
+    "lng": 23.7470481,
+    "placeId": "ChIJQQyS0dijoRQRdESI8MS-lBo",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.4,
+    "userRatingsTotal": 7
+  },
+  {
+    "id": 137,
+    "name": "DHL Service Point",
+    "address": "Λεωφόρος Κηφισίας 244 Κηφισιά, Athina 145 61, Greece",
+    "lat": 38.0737759,
+    "lng": 23.8125985,
+    "placeId": "ChIJ2wEVbE-foRQRPtulcx5b_c8",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.7,
+    "userRatingsTotal": 118
+  },
+  {
+    "id": 138,
+    "name": "DHL Service Point (DHL SERVICE POINT)",
+    "address": "Leof. Athinon 233, Athina 122 42, Greece",
+    "lat": 38.000347,
+    "lng": 23.686996,
+    "placeId": "ChIJu91-c4-9oRQR_93IvGV25n8",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.4,
+    "userRatingsTotal": 60
+  },
+  {
+    "id": 139,
+    "name": "DHL Service Point Locker (BOX NOW LOCKER 24/7 AB Super Market)",
+    "address": "AB Vasilopoulos, Patision 240, Athina 112 56, Greece",
+    "lat": 38.0084046,
+    "lng": 23.7352616,
+    "placeId": "ChIJFRm1efijoRQRTn6fPvfCW-E",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 1,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 140,
+    "name": "DHL Service Point",
+    "address": "Leof. Mesogeion 381, Ag. Paraskevi 153 43, Greece",
+    "lat": 38.0116541,
+    "lng": 23.8121949,
+    "placeId": "ChIJO71KqlSYoRQR2ZWMw41Wg9Y",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.2,
+    "userRatingsTotal": 313
+  },
+  {
+    "id": 141,
+    "name": "DHL Service Point (Clever Point LORD OF VAPE)",
+    "address": "Tilefanous 2, Athina 104 42, Greece",
+    "lat": 37.9960911,
+    "lng": 23.7114965,
+    "placeId": "ChIJFfcxshy9oRQR0C8i6JCv9ms",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 1
+  },
+  {
+    "id": 142,
+    "name": "DHL Service Point (Clever Point ΟΠΑΠ)",
+    "address": "Alexandrias 34, Athina 104 42, Greece",
+    "lat": 37.9924563,
+    "lng": 23.7133555,
+    "placeId": "ChIJ4R9ZCIa9oRQREMwBKoiMO54",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 5,
+    "userRatingsTotal": 3
+  },
+  {
+    "id": 143,
+    "name": "DHL Service Point (Clever Point ΟΠΑΠ Μ.ΤΣΟΡΟΥΜΟΓΛΟΥ Σ.ΜΑΝΟΥ Ο.Ε.)",
+    "address": "Michalakopoulou 94, Athina 115 28, Greece",
+    "lat": 37.9806709,
+    "lng": 23.7574833,
+    "placeId": "ChIJDV-pAUK9oRQRXFIfy8PbxBo",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.5,
+    "userRatingsTotal": 2
+  },
+  {
+    "id": 144,
+    "name": "DHL Service Point (Clever Point ALL OF VAPE)",
+    "address": "Panepistimiou 67, Athina 105 64, Greece",
+    "lat": 37.9836931,
+    "lng": 23.7296594,
+    "placeId": "ChIJ6S_uJlG9oRQRGxAs8Nmq250",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": null,
+    "userRatingsTotal": 0
+  },
+  {
+    "id": 145,
+    "name": "DHL Service Point (Clever Point ΟΠΑΠ)",
+    "address": "ΕΥΤΥΧΙΔΟΥ 7 &, Nikosthenous 3, Athina 116 35, Greece",
+    "lat": 37.9681112,
+    "lng": 23.7452261,
+    "placeId": "ChIJd4aB0f-9oRQRE8IZ6MwGtQA",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.4,
+    "userRatingsTotal": 5
+  },
+  {
+    "id": 146,
+    "name": "DHL - Clever Point Partner BONSAI NTZIOKAS COURIER",
+    "address": "Patision 230, Athina 112 56, Greece",
+    "lat": 38.0074422,
+    "lng": 23.7353738,
+    "placeId": "ChIJSTwAVIujoRQROHe9ABxefc4",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 4.2,
+    "userRatingsTotal": 34
+  },
+  {
+    "id": 147,
+    "name": "DHL Service Point (Clever Point ΟΠΑΠ ΓΕΩΡΓΙΟΥ ΔΗΜΗΤΡΙΟΣ)",
+    "address": "Παρασίου, Ἀcharnon 11, Athina 104 40, Greece",
+    "lat": 37.99537890000001,
+    "lng": 23.7259553,
+    "placeId": "ChIJG3eYeXejoRQR_0ee7Gci2lo",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "rating": 3.7,
+    "userRatingsTotal": 3
+  }
+]

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Dashboard - ecodrop³</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --mint-green: #B8F4D4;
+      --dark-green: #4CAF50;
+      --text-dark: #2c3e50;
+      --text-light: #5a6c7d;
+      --white: #ffffff;
+      --light-bg: #f8f9fa;
+      --border: #e0e0e0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--white);
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-dark);
+    }
+
+    .logo sup {
+      color: var(--dark-green);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--mint-green);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+    }
+
+    .earnings-badge {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--text-dark);
+      color: var(--text-dark);
+    }
+
+    .btn-outline:hover {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-green {
+      background: var(--mint-green);
+      color: var(--text-dark);
+      font-weight: bold;
+    }
+
+    .btn-green:hover {
+      background: #a0e5c0;
+      transform: translateY(-2px);
+    }
+
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #c82333;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+
+    /* Card */
+    .card {
+      background: var(--white);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .card h2 {
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+    }
+
+    /* Stats Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .stat-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--dark-green);
+    }
+
+    .stat-label {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Job Cards */
+    .job-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    .job-card:hover {
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .job-card.highlight {
+      border-color: var(--mint-green);
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 1rem;
+    }
+
+    .job-id {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .job-price {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--dark-green);
+    }
+
+    .earnings {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .job-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .job-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+    }
+
+    .job-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .job-actions button {
+      flex: 1;
+      padding: 0.8rem;
+    }
+
+    .code-display {
+      background: var(--mint-green);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .code-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: var(--text-dark);
+    }
+
+    /* Messages */
+    .message {
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .message.success { background: #d4edda; color: #155724; }
+    .message.error { background: #f8d7da; color: #721c24; }
+    .message.info { background: #d1ecf1; color: #0c5460; }
+
+    .hidden { display: none !important; }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-light);
+    }
+
+    .empty-state-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" style="text-decoration: none;">
+      <div class="logo">ecodrop<sup>3</sup></div>
+    </a>
+    <div class="nav-right">
+      <div class="user-info" onclick="window.location.href='profile.html'" style="cursor: pointer;">
+        <span>🚴</span>
+        <div>
+          <div id="userName">Loading...</div>
+          <div style="font-size: 0.8rem; opacity: 0.8;" id="walletShort"></div>
+        </div>
+      </div>
+      <div id="customerAccess" style="display: none;">
+        <a href="customer-dashboard.html" class="btn btn-primary" style="text-decoration: none; background: var(--mint-green); color: var(--text-dark); border: none;">📦 Order a Drop</a>
+      </div>
+      <button class="btn btn-outline" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Stats -->
+  <div style="max-width: 1400px; margin: 2rem auto; padding: 0 2rem;">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📦</div>
+        <div class="stat-value" id="totalDeliveries">0</div>
+        <div class="stat-label">Total Deliveries</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⭐</div>
+        <div class="stat-value" id="rating">5.0</div>
+        <div class="stat-label">Rating</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎯</div>
+        <div class="stat-value" id="activeJobs">0</div>
+        <div class="stat-label">Active Jobs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Left Column - Available Jobs -->
+    <div>
+      <div class="card">
+        <h2>🎯 Available Deliveries</h2>
+        <div id="availableJobsMessage"></div>
+        <div id="availableJobsContainer">
+          <div class="empty-state">
+            <div class="empty-state-icon">🔍</div>
+            <p>Loading available deliveries...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column - My Active Jobs -->
+    <div>
+      <div class="card">
+        <h2>🚴 My Active Deliveries</h2>
+        <div id="activeJobsMessage"></div>
+        <div id="activeJobsContainer">
+          <div class="empty-state">
+            <div class="empty-state-icon">📭</div>
+            <p>No active deliveries</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:3000/api';
+    let authToken = localStorage.getItem('authToken');
+    let currentUser = null;
+    let moverPosition = null; // {lat,lng} from geolocation or profile
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (!authToken) {
+        window.location.href = 'signin.html';
+        return;
+      }
+
+      await loadUserProfile();
+      
+      // Try geolocation to compute distance to locker accurately
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((pos) => {
+          moverPosition = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+          // Refresh lists to include distances if already loaded
+          loadAvailableJobs();
+          loadMyActiveJobs();
+        });
+      }
+      
+      loadAvailableJobs();
+      loadMyActiveJobs();
+      
+      // Auto-refresh every 5 seconds
+      setInterval(() => {
+        loadAvailableJobs();
+        loadMyActiveJobs();
+      }, 5000);
+    });
+
+    // Load user profile
+    async function loadUserProfile() {
+      try {
+        const res = await fetch(`${API_BASE}/auth/me`, {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        const data = await res.json();
+        
+        if (data.success) {
+          currentUser = data.user;
+          document.getElementById('userName').textContent = 
+            data.user.firstName ? `${data.user.firstName} ${data.user.lastName}` : 
+            data.user.walletAddress?.substring(0, 8) + '...';
+          // Show wallet short (for clarity since funds go directly to wallet)
+          const wa = data.user.walletAddress;
+          document.getElementById('walletShort').textContent = wa ? `${wa.slice(0,6)}...${wa.slice(-4)}` : '';
+          
+          document.getElementById('totalDeliveries').textContent = data.user.completedJobs || 0;
+          document.getElementById('rating').textContent = (data.user.rating || 5.0).toFixed(1);
+          
+          // Show customer dashboard link if user has both roles
+          if (data.user.role === 'both' || data.user.role === 'gigworker') {
+            document.getElementById('customerAccess').style.display = 'block';
+          }
+        }
+      } catch (error) {
+        console.error('Load profile error:', error);
+        logout();
+      }
+    }
+
+    // Load available jobs
+    async function loadAvailableJobs() {
+      try {
+        const res = await fetch(`${API_BASE}/jobs/available`, {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        const data = await res.json();
+
+        const container = document.getElementById('availableJobsContainer');
+        
+        // Get declined jobs from localStorage
+        const declinedJobs = JSON.parse(localStorage.getItem('declinedJobs') || '[]');
+        
+        // Filter out declined jobs
+        const availableJobs = data.jobs?.filter(job => !declinedJobs.includes(job._id)) || [];
+        
+        if (availableJobs.length > 0) {
+          container.innerHTML = availableJobs.map(job => `
+            <div class="job-card highlight">
+              <div class="job-header">
+                <div>
+                  <div class="job-id">Job #${job._id.substring(0, 8)}</div>
+                  <div class="job-price">€${job.amount?.toFixed(2)}</div>
+                  <div class="earnings">You earn: €${((job.amount || 0) - (job.platformFee || 0)).toFixed(2)}</div>
+                </div>
+              </div>
+              <div class="job-details">
+                <div class="job-detail">📦 ${job.packageSize}</div>
+                <div class="job-detail">📏 Delivery: ${job.distanceKm?.toFixed(2) || 'N/A'} km</div>
+                <div class="job-detail">🚶 To Locker: ${formatDistanceToLocker(job)}</div>
+                <div class="job-detail">📍 ${job.lockerLocation}</div>
+                <div class="job-detail">📅 ${new Date(job.createdAt).toLocaleTimeString()}</div>
+              </div>
+              ${job.deliveryInstructions ? `<div style="background: #fff3cd; padding: 0.8rem; border-radius: 8px; margin-bottom: 0.5rem; font-size: 0.9rem;"><strong>📝 Special Instructions:</strong> ${job.deliveryInstructions}</div>` : ''}
+              <div class="job-actions">
+                <button class="btn btn-green" onclick="acceptJob('${job._id}')">
+                  Accept Delivery
+                </button>
+                <button class="btn btn-outline" onclick="declineAvailableJob('${job._id}')">
+                  Not Interested
+                </button>
+              </div>
+            </div>
+          `).join('');
+        } else {
+          container.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">📭</div>
+              <p>No available deliveries at the moment.<br>Check back soon!</p>
+            </div>
+          `;
+        }
+      } catch (error) {
+        console.error('Load available jobs error:', error);
+      }
+    }
+
+    // Load my active jobs
+    async function loadMyActiveJobs() {
+      try {
+        const userId = currentUser?.walletAddress || currentUser?.email;
+        const res = await fetch(`${API_BASE}/jobs/my-jobs?userId=${encodeURIComponent(userId)}`, {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        const data = await res.json();
+
+        const container = document.getElementById('activeJobsContainer');
+        const activeJobs = data.jobs?.filter(j => 
+          j.paid === true && 
+          j.status !== 'delivered' && 
+          j.status !== 'cancelled'
+        ) || [];
+        
+        document.getElementById('activeJobs').textContent = activeJobs.length;
+        
+        if (activeJobs.length > 0) {
+          container.innerHTML = activeJobs.map(job => `
+            <div class="job-card">
+              <div class="job-header">
+                <div>
+                  <div class="job-id">Job #${job._id.substring(0, 8)}</div>
+                  <div class="job-price">€${job.amount?.toFixed(2)}</div>
+                  <div class="earnings">You earn: €${((job.amount || 0) - (job.platformFee || 0)).toFixed(2)}</div>
+                </div>
+              </div>
+              <div class="job-details">
+                <div class="job-detail">📦 ${job.packageSize}</div>
+                <div class="job-detail">📏 Delivery: ${job.distanceKm?.toFixed(2)} km</div>
+                <div class="job-detail">🚶 To Locker: ${formatDistanceToLocker(job)}</div>
+                <div class="job-detail"> ${job.lockerLocation}</div>
+                <div class="job-detail">🎯 ${formatStatus(job.status)}</div>
+              </div>
+              ${job.deliveryInstructions ? `<div style="background: #fff3cd; padding: 0.8rem; border-radius: 8px; margin-bottom: 0.5rem; font-size: 0.9rem;"><strong>📝 Special Instructions:</strong> ${job.deliveryInstructions}</div>` : ''}
+              
+              ${job.status === 'accepted' ? `
+                <div style="background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 100%); padding: 0.6rem 0.8rem; border-radius: 8px; margin-top: 0.5rem; font-size: 0.85rem; color: white; display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="font-size: 1.2rem;">🔒</span>
+                  <div style="flex: 1;">
+                    <strong>Payment Secured in Escrow</strong><br>
+                    <span style="font-size: 0.8rem; opacity: 0.9;">€${((job.amount || 0) - (job.platformFee || 0)).toFixed(2)} will be released on delivery</span>
+                  </div>
+                </div>
+                <div class="code-display">
+                  <div style="font-size: 0.85rem; margin-bottom: 0.5rem;">Locker Code:</div>
+                  <div class="code-value">${job.lockerCode || 'N/A'}</div>
+                </div>
+                <div class="job-actions">
+                  <button class="btn btn-green" onclick="confirmPickup('${job._id}')">
+                    Confirm Pickup
+                  </button>
+                  <button class="btn btn-danger" onclick="declineJob('${job._id}')" style="background: #dc3545;">
+                    Decline
+                  </button>
+                </div>
+              ` : job.status === 'picked_up' ? `
+                <div style="background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 100%); padding: 0.6rem 0.8rem; border-radius: 8px; margin-top: 0.5rem; font-size: 0.85rem; color: white; display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="font-size: 1.2rem;">🔒</span>
+                  <div style="flex: 1;">
+                    <strong>Payment Secured in Escrow</strong><br>
+                    <span style="font-size: 0.8rem; opacity: 0.9;">€${((job.amount || 0) - (job.platformFee || 0)).toFixed(2)} will be released on delivery</span>
+                  </div>
+                </div>
+                <div style="background: #FFF3CD; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                  <strong>📍 Delivery Address:</strong><br>
+                  <span style="font-size: 0.9rem;">${job.deliveryAddressPlain || 'Address not available yet'}</span><br>
+                  <em style="font-size: 0.85rem; color: #666;">Ask customer for the 4-digit confirmation code on delivery</em>
+                </div>
+                <div class="job-actions">
+                  <button class="btn btn-green" onclick="confirmDelivery('${job._id}')">
+                    Confirm Delivery
+                  </button>
+                </div>
+              ` : ''}
+            </div>
+          `).join('');
+        } else {
+          container.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">📭</div>
+              <p>No active deliveries.<br>Accept a job to get started or check your profile for completed deliveries!</p>
+            </div>
+          `;
+        }
+      } catch (error) {
+        console.error('Load active jobs error:', error);
+      }
+    }
+
+    // Accept job
+    async function acceptJob(jobId) {
+      try {
+        showMessage('availableJobsMessage', '⏳ Accepting job...', 'info');
+        
+        const res = await fetch(`${API_BASE}/jobs/${jobId}/accept`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify({
+            gigWorkerId: currentUser.walletAddress || currentUser.email,
+            gigWorkerWallet: currentUser.walletAddress || currentUser.email,
+            gigWorkerName: currentUser.name || currentUser.email || 'Anonymous Worker'
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          showMessage('availableJobsMessage', '✅ Job accepted! Check "My Active Deliveries"', 'success');
+          loadAvailableJobs();
+          loadMyActiveJobs();
+          loadUserProfile();
+        } else {
+          throw new Error(data.error);
+        }
+      } catch (error) {
+        showMessage('availableJobsMessage', '❌ ' + error.message, 'error');
+      }
+    }
+
+    // Decline job
+    async function declineJob(jobId) {
+      try {
+        showMessage('activeJobsMessage', '⏳ Declining job...', 'info');
+        
+        const res = await fetch(`${API_BASE}/jobs/${jobId}/decline`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify({
+            gigWorkerId: currentUser.walletAddress || currentUser.email
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          showMessage('activeJobsMessage', '✅ Job declined', 'success');
+          loadMyActiveJobs();
+          loadAvailableJobs();
+        } else {
+          throw new Error(data.error);
+        }
+      } catch (error) {
+        showMessage('activeJobsMessage', '❌ ' + error.message, 'error');
+      }
+    }
+
+    // Confirm pickup
+    async function confirmPickup(jobId) {
+      try {
+        showMessage('activeJobsMessage', '⏳ Confirming pickup...', 'info');
+        
+        const res = await fetch(`${API_BASE}/jobs/${jobId}/pickup`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify({
+            gigWorkerId: currentUser.walletAddress || currentUser.email
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          showMessage('activeJobsMessage', '✅ Pickup confirmed! Proceed to delivery', 'success');
+          loadMyActiveJobs();
+        } else {
+          throw new Error(data.error);
+        }
+      } catch (error) {
+        showMessage('activeJobsMessage', '❌ ' + error.message, 'error');
+      }
+    }
+
+    // Confirm delivery
+    async function confirmDelivery(jobId) {
+      const userCode = prompt('Enter the delivery confirmation code from the customer:');
+      
+      if (!userCode) return;
+
+      try {
+        showMessage('activeJobsMessage', '⏳ Confirming delivery...', 'info');
+        
+        const res = await fetch(`${API_BASE}/jobs/${jobId}/deliver`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify({
+            gigWorkerId: currentUser.walletAddress || currentUser.email,
+            deliveryConfirmationCode: userCode
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          showMessage('activeJobsMessage', '🎉 Delivery completed! Payment released to your account', 'success');
+          loadMyActiveJobs();
+          loadUserProfile();
+        } else {
+          throw new Error(data.error);
+        }
+      } catch (error) {
+        showMessage('activeJobsMessage', '❌ ' + error.message, 'error');
+      }
+    }
+
+    // Format status
+    function formatStatus(status) {
+      const statusMap = {
+        'accepted': 'Ready to Pickup',
+        'picked_up': 'Out for Delivery',
+        'delivered': 'Completed'
+      };
+      return statusMap[status] || status;
+    }
+
+    // Format display code (ensure 4-digit numeric)
+    function formatDisplayCode(code) {
+      if (!code) return '----';
+      if (/^\d{4}$/.test(code)) return code;
+      const digits = (code.match(/\d+/g) || []).join('').slice(0,4);
+      if (digits.length === 4) return digits;
+      const hexToDigit = code.replace(/[^A-F0-9]/gi,'').split('').map(ch => {
+        if (/\d/.test(ch)) return ch;
+        return (parseInt(ch,16) % 10).toString();
+      }).join('').slice(0,4).padEnd(4,'0');
+      return hexToDigit || '0000';
+    }
+
+    // Decline available job (hide it from current view)
+    function declineAvailableJob(jobId) {
+      // Store declined job ID in localStorage
+      const declinedJobs = JSON.parse(localStorage.getItem('declinedJobs') || '[]');
+      if (!declinedJobs.includes(jobId)) {
+        declinedJobs.push(jobId);
+        localStorage.setItem('declinedJobs', JSON.stringify(declinedJobs));
+      }
+      
+      // Hide the card from view
+      const jobCards = document.querySelectorAll('.job-card.highlight');
+      jobCards.forEach(card => {
+        if (card.innerHTML.includes(jobId.substring(0, 8))) {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Distance helpers
+    function toRad(deg) { return deg * Math.PI / 180; }
+    
+    function haversineKm(lat1, lon1, lat2, lon2) {
+      if ([lat1, lon1, lat2, lon2].some(v => typeof v !== 'number' || isNaN(v))) return null;
+      const R = 6371; 
+      const dLat = toRad(lat2 - lat1);
+      const dLon = toRad(lon2 - lon1);
+      const a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+      return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+    }
+    
+    function formatDistanceToLocker(job) {
+      const lc = job.lockerCoords;
+      if (!lc || lc.lat == null || lc.lng == null) return 'N/A';
+      const pos = moverPosition || currentUser?.currentLocation;
+      if (!pos || pos.lat == null || pos.lng == null) return '—';
+      const d = haversineKm(pos.lat, pos.lng, lc.lat, lc.lng);
+      return d == null ? '—' : `${d.toFixed(2)} km`;
+    }
+
+    // Show message
+    function showMessage(elementId, message, type) {
+      const el = document.getElementById(elementId);
+      el.innerHTML = `<div class="message ${type}">${message}</div>`;
+      setTimeout(() => { el.innerHTML = ''; }, 5000);
+    }
+
+    // Logout
+    // Logout
+    function logout() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('accountType');
+      window.location.href = 'index.html';
+    }
+  </script>
+
+</body>
+</html>

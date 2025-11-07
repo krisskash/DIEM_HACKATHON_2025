@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - ecodrop³</title>
+  <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --mint-green: #B8F4D4;
+      --dark-green: #4CAF50;
+      --text-dark: #2c3e50;
+      --text-light: #5a6c7d;
+      --white: #ffffff;
+      --light-bg: #f8f9fa;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .signup-container {
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .signup-sidebar {
+      flex: 1;
+      background: var(--mint-green);
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .signup-sidebar .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--text-dark);
+      margin-bottom: 2rem;
+    }
+
+    .signup-sidebar .logo sup {
+      color: var(--dark-green);
+    }
+
+    .signup-sidebar h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+
+    .signup-sidebar p {
+      color: var(--text-dark);
+      opacity: 0.8;
+      margin-bottom: 2rem;
+    }
+
+    .signup-form {
+      flex: 1;
+      padding: 3rem;
+    }
+
+    .signup-form h2 {
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .signup-form .subtitle {
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-light);
+      transition: all 0.3s;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+    }
+
+    .tab:hover {
+      color: var(--text-dark);
+    }
+
+    .tab.active {
+      color: var(--dark-green);
+      border-bottom-color: var(--dark-green);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.9rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--dark-green);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: #1a252f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .btn-primary:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .wallet-connect {
+      background: var(--mint-green);
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .wallet-connect:hover {
+      background: #a0e5c0;
+    }
+
+    .message {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .message.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .message.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .message.info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+
+    .signin-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .signin-link a {
+      color: var(--dark-green);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .signin-link a:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--text-light);
+      text-decoration: none;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      color: var(--text-dark);
+    }
+
+    @media (max-width: 768px) {
+      .signup-container {
+        flex-direction: column;
+      }
+
+      .signup-sidebar {
+        padding: 2rem;
+      }
+
+      .signup-form {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-container">
+    <!-- Sidebar -->
+    <div class="signup-sidebar">
+      <div class="logo">ecodrop<sup>3</sup></div>
+      <h2>Create an account</h2>
+      <p>Join our eco-friendly delivery network. Choose your role and start making a difference today.</p>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div class="signup-form">
+      <a href="index.html" class="back-link">← Back to home</a>
+      <h2>Hello friend!</h2>
+      <p class="subtitle">Fill in your personal info</p>
+
+      <div id="message"></div>
+
+      <!-- Account Type Tabs -->
+      <div class="tabs">
+        <button class="tab active" onclick="selectAccountType('customer')">
+          👤 Customer
+        </button>
+        <button class="tab" onclick="selectAccountType('gigWorker')">
+          🚴 Delivery Person
+        </button>
+      </div>
+
+      <form id="signupForm">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" placeholder="Enter your first name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" placeholder="Enter your last name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Create a password" required minlength="6">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="Enter your phone number" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="signupBtn">
+          Sign Up
+        </button>
+      </form>
+
+      <div style="text-align: center; margin: 1rem 0; color: var(--text-light); font-weight: 600;">
+        OR
+      </div>
+
+      <button type="button" class="btn wallet-connect" onclick="connectWallet()">
+        🦊 Sign Up with MetaMask
+      </button>
+
+      <div class="signin-link">
+        Already have an account? <a href="signin.html">Sign in</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:3000/api';
+    let walletAddress = null;
+    let accountType = 'customer';
+
+    function selectAccountType(type) {
+      accountType = type;
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      showMessage(`Selected account type: ${type === 'customer' ? 'Customer' : 'Delivery Person'}`, 'info');
+    }
+
+    // Traditional email/password signup
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const phone = document.getElementById('phone').value;
+
+      try {
+        showMessage('Creating account...', 'info');
+        document.getElementById('signupBtn').disabled = true;
+
+        const res = await fetch(`${API_BASE}/auth/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            password,
+            phone,
+            accountType
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          showMessage('Account created successfully! Redirecting...', 'success');
+          localStorage.setItem('authToken', data.token);
+          localStorage.setItem('accountType', accountType);
+          
+          setTimeout(() => {
+            if (accountType === 'customer') {
+              window.location.href = 'customer-dashboard.html';
+            } else {
+              window.location.href = 'gigworker-dashboard.html';
+            }
+          }, 1500);
+        } else {
+          throw new Error(data.error || 'Failed to create account');
+        }
+      } catch (error) {
+        console.error('Signup error:', error);
+        showMessage('Error: ' + error.message, 'error');
+        document.getElementById('signupBtn').disabled = false;
+      }
+    });
+
+    // Wallet signup
+    async function connectWallet() {
+      try {
+        if (typeof window.ethereum === 'undefined') {
+          showMessage('Please install MetaMask to continue', 'error');
+          return;
+        }
+
+        showMessage('Connecting to MetaMask...', 'info');
+        
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        walletAddress = accounts[0];
+        
+        showMessage('Wallet connected. Creating account...', 'info');
+
+        // Sign message for verification
+        const message = `Sign up to ecodrop³\nWallet: ${walletAddress}\nTime: ${Date.now()}`;
+        const signature = await window.ethereum.request({
+          method: 'personal_sign',
+          params: [message, walletAddress]
+        });
+
+        const res = await fetch(`${API_BASE}/auth/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            walletAddress,
+            signature,
+            message,
+            accountType
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          showMessage('Account created successfully! Redirecting...', 'success');
+          localStorage.setItem('authToken', data.token);
+          localStorage.setItem('accountType', accountType);
+          
+          setTimeout(() => {
+            if (accountType === 'customer') {
+              window.location.href = 'customer-dashboard.html';
+            } else {
+              window.location.href = 'gigworker-dashboard.html';
+            }
+          }, 1500);
+        } else {
+          throw new Error(data.error || 'Failed to create account');
+        }
+      } catch (error) {
+        console.error('Wallet signup error:', error);
+        showMessage('Failed to connect wallet: ' + error.message, 'error');
+      }
+    }
+
+    function showMessage(msg, type) {
+      const messageDiv = document.getElementById('message');
+      messageDiv.innerHTML = `<div class="message ${type}">${msg}</div>`;
+    }
+  </script>
+
+</body>
+</html>

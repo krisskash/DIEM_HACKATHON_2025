@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - ecodrop³</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --mint-green: #B8F4D4;
+      --dark-green: #4CAF50;
+      --text-dark: #2c3e50;
+      --text-light: #5a6c7d;
+      --white: #ffffff;
+      --light-bg: #f8f9fa;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--white);
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-dark);
+      flex: 1;
+    }
+
+    .logo sup {
+      color: var(--dark-green);
+      font-size: 0.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--dark-green);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--text-dark);
+      color: var(--text-dark);
+    }
+
+    .btn-outline:hover {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-primary {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--dark-green);
+    }
+
+    .about-hero {
+      background: var(--mint-green);
+      color: var(--text-dark);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .about-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-hero p {
+      font-size: 1.3rem;
+      opacity: 0.85;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .about-content {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .about-section {
+      margin-bottom: 4rem;
+    }
+
+    .about-section h2 {
+      font-size: 2.2rem;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .value-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--dark-green);
+    }
+
+    .value-card .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .value-card h3 {
+      font-size: 1.5rem;
+      color: #2c3e50;
+      margin-bottom: 0.8rem;
+    }
+
+    .value-card p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .team-section {
+      background: #f8f9fa;
+      padding: 3rem 2rem;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-dark);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .logo sup {
+      color: var(--dark-green);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">ecodrop<sup>3</sup></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-buttons">
+      <a href="signin.html" class="btn btn-outline">Sign In</a>
+      <a href="signup.html" class="btn btn-primary">Sign Up</a>
+    </div>
+  </nav>
+
+  <div class="about-hero">
+    <h1><span class="logo">ecodrop<sup>3</sup></span></h1>
+    <p>DIEM Hackathon 2025 Project - Revolutionizing delivery with blockchain technology</p>
+  </div>
+
+  <div class="about-content">
+    <div class="about-section">
+      <h2>About This Project</h2>
+      <p>
+        <strong>ecodrop³</strong> is our submission for the <strong>DIEM Hackathon 2025</strong>. 
+        We are a team of 4 passionate students who came together to solve real-world logistics 
+        challenges using cutting-edge blockchain technology and smart contracts.
+      </p>
+      <p>
+        Our platform demonstrates how blockchain can transform traditional delivery services 
+        by creating a decentralized, trustless ecosystem where payments are secured through 
+        smart contract escrow, ensuring both customers and delivery partners are protected.
+      </p>
+    </div>
+
+    <div class="about-section">
+      <h2>Our Vision</h2>
+      <p>
+        We envision a future where anyone can participate in the delivery economy without 
+        intermediaries taking large cuts. By leveraging Ethereum smart contracts on the 
+        Sepolia testnet, we've built a proof-of-concept that shows how blockchain can 
+        enable peer-to-peer delivery with complete transparency and security.
+      </p>
+    </div>
+
+    <div class="about-section">
+      <h2>Key Technologies</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="icon">⛓️</div>
+          <h3>Blockchain</h3>
+          <p>Ethereum smart contracts on Sepolia testnet for secure, transparent transactions</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">🔒</div>
+          <h3>Escrow System</h3>
+          <p>Funds held in smart contracts until delivery confirmation protects all parties</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">�</div>
+          <h3>Crypto Payments</h3>
+          <p>ETH payments with live price conversion and QR code wallet integration</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">🗺️</div>
+          <h3>Smart Routing</h3>
+          <p>Google Maps integration for distance calculation and route optimization</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">📦</div>
+          <h3>Locker Network</h3>
+          <p>Secure pickup points with unique codes for package protection</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">⭐</div>
+          <h3>Rating System</h3>
+          <p>Community-driven reputation system for delivery partners</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h2>The Problem We're Solving</h2>
+      <p>
+        Traditional delivery services are expensive, centralized, and take large commission 
+        cuts from drivers. We're demonstrating how blockchain can create a fairer, more 
+        transparent alternative where 90% of delivery fees go directly to delivery partners.
+      </p>
+      <p>
+        By using smart contracts, we eliminate the need for trust between strangers. The 
+        technology ensures payment is only released when delivery is confirmed, protecting 
+        both customers and delivery partners.
+      </p>
+    </div>
+
+    <div class="team-section">
+      <h2>DIEM Hackathon 2025</h2>
+      <p style="font-size: 1.2rem;">
+        This project showcases the potential of blockchain technology to revolutionize 
+        everyday services. Built by students, for the future of decentralized logistics.
+      </p>
+    </div>
+  </div>
+
+  <footer style="background: var(--text-dark); color: white; padding: 2rem; text-align: center; margin-top: 4rem;">
+    <p>&copy; 2025 ecodrop³. DIEM Hackathon 2025 Project.</p>
+  </footer>
+
+  <script>
+    const API_BASE = 'http://localhost:3000/api';
+    
+    // Check if user is logged in on page load
+    document.addEventListener('DOMContentLoaded', async () => {
+      const authToken = localStorage.getItem('authToken');
+      
+      if (authToken) {
+        try {
+          const res = await fetch(`${API_BASE}/auth/me`, {
+            headers: { 'Authorization': `Bearer ${authToken}` }
+          });
+          const data = await res.json();
+          
+          if (data.success) {
+            // User is logged in, replace buttons with dashboard link
+            const navButtons = document.querySelector('.nav-buttons');
+            const dashboardUrl = data.user.role === 'gigworker' || data.user.role === 'both' 
+              ? 'gigworker-dashboard.html' 
+              : 'customer-dashboard.html';
+            
+            navButtons.innerHTML = `
+              <a href="${dashboardUrl}" class="btn btn-primary">📊 Go to Dashboard</a>
+              <button onclick="logout()" class="btn btn-outline">Logout</button>
+            `;
+          }
+        } catch (error) {
+          console.error('Auth check error:', error);
+        }
+      }
+    });
+    
+    function logout() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('accountType');
+      window.location.reload();
+    }
+  </script>
+</body>
+</html>

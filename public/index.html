@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ecodrop³ - Deliver smarter. Deliver greener.</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --mint-green: #B8F4D4;
+      --dark-green: #4CAF50;
+      --text-dark: #2c3e50;
+      --text-light: #5a6c7d;
+      --white: #ffffff;
+      --light-bg: #f8f9fa;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--white);
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-dark);
+      flex: 1;
+    }
+
+    .logo sup {
+      color: var(--dark-green);
+      font-size: 0.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--dark-green);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--text-dark);
+      color: var(--text-dark);
+    }
+
+    .btn-outline:hover {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-primary {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: #1a252f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .btn-green {
+      background: var(--mint-green);
+      color: var(--text-dark);
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 1rem 2rem;
+    }
+
+    .btn-green:hover {
+      background: #a0e5c0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 3rem;
+      min-height: calc(100vh - 80px);
+    }
+
+    .hero-content {
+      flex: 1;
+      background: var(--mint-green);
+      padding: 3rem;
+      border-radius: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      color: var(--text-dark);
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      opacity: 0.8;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .hero-image {
+      flex: 1;
+      background: #FFF5E6;
+      padding: 3rem;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+    }
+
+    .people-illustration {
+      font-size: 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .person {
+      font-size: 60px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .person:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .person:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Features */
+    .features {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .feature-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        padding: 2rem 1rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .people-illustration {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">ecodrop<sup>3</sup></div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-buttons" id="navButtons">
+      <a href="signin.html" class="btn btn-outline">Sign In</a>
+      <a href="signup.html" class="btn btn-primary">Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Deliver smarter.<br>Deliver greener.</h1>
+      <p>Blockchain-powered delivery service connecting couriers, lockers, and gig workers for eco-friendly last-mile delivery in Athens.</p>
+      <a href="signup.html" class="btn btn-green">Get Started →</a>
+    </div>
+    <div class="hero-image">
+      <div class="people-illustration">
+        <div class="person">🚶</div>
+        <div class="person">📦</div>
+        <div class="person">🚴</div>
+        <div class="person">🏪</div>
+        <div class="person">🌱</div>
+        <div class="person">🚚</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🔐</div>
+      <h3>Blockchain Security</h3>
+      <p>Smart contract escrow ensures safe payments for all parties</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌱</div>
+      <h3>Eco-Friendly</h3>
+      <p>Reduce carbon footprint with optimized delivery routes</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Fast Delivery</h3>
+      <p>Quick pickup from lockers to your doorstep</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💰</div>
+      <h3>Fair Earnings</h3>
+      <p>Gig workers earn 90% of delivery fees</p>
+    </div>
+  </section>
+
+  <script>
+    const API_BASE = 'http://localhost:3000/api';
+    
+    // Check if user is logged in on page load
+    document.addEventListener('DOMContentLoaded', async () => {
+      const authToken = localStorage.getItem('authToken');
+      
+      if (authToken) {
+        try {
+          const res = await fetch(`${API_BASE}/auth/me`, {
+            headers: { 'Authorization': `Bearer ${authToken}` }
+          });
+          const data = await res.json();
+          
+          if (data.success) {
+            // User is logged in, replace buttons with dashboard link
+            const navButtons = document.getElementById('navButtons');
+            const dashboardUrl = data.user.role === 'gigworker' || data.user.role === 'both' 
+              ? 'gigworker-dashboard.html' 
+              : 'customer-dashboard.html';
+            
+            navButtons.innerHTML = `
+              <a href="${dashboardUrl}" class="btn btn-primary">📊 Go to Dashboard</a>
+              <button onclick="logout()" class="btn btn-outline">Logout</button>
+            `;
+          }
+        } catch (error) {
+          console.error('Auth check error:', error);
+        }
+      }
+    });
+    
+    function logout() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('accountType');
+      window.location.reload();
+    }
+  </script>
+
+</body>
+</html>

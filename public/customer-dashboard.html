@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard - ecodrop³</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgBGFbJ5FngNQY6yNun7l2NFMZxkETsz8&libraries=places"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --mint-green: #B8F4D4;
+      --dark-green: #4CAF50;
+      --text-dark: #2c3e50;
+      --text-light: #5a6c7d;
+      --white: #ffffff;
+      --light-bg: #f8f9fa;
+      --border: #e0e0e0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--white);
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-dark);
+    }
+
+    .logo sup {
+      color: var(--dark-green);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--mint-green);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--text-dark);
+      color: var(--text-dark);
+    }
+
+    .btn-outline:hover {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-green {
+      background: var(--mint-green);
+      color: var(--text-dark);
+      font-weight: bold;
+    }
+
+    .btn-green:hover {
+      background: #a0e5c0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+
+    /* Card */
+    .card {
+      background: var(--white);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .card h2 {
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+    }
+
+    /* Form */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--dark-green);
+    }
+
+    /* Autocomplete Suggestions */
+    .autocomplete-suggestions {
+      position: absolute;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      max-height: 300px;
+      overflow-y: auto;
+      width: calc(100% - 4px);
+      z-index: 1000;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    .autocomplete-suggestions.show {
+      display: block;
+    }
+
+    .suggestion-item {
+      padding: 0.8rem;
+      cursor: pointer;
+      border-bottom: 1px solid var(--light-bg);
+      transition: background 0.2s;
+    }
+
+    .suggestion-item:hover {
+      background: var(--light-bg);
+    }
+
+    .suggestion-item:last-child {
+      border-bottom: none;
+    }
+
+    .suggestion-name {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .suggestion-address {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .suggestion-rating {
+      font-size: 0.8rem;
+      color: #f39c12;
+      margin-top: 0.2rem;
+    }
+
+    .form-group {
+      position: relative;
+    }
+
+    /* Package Size Selector */
+    .package-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .package-option {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border: 3px solid var(--border);
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: var(--white);
+    }
+
+    .package-option:hover {
+      border-color: var(--mint-green);
+      transform: translateY(-3px);
+    }
+
+    .package-option.selected {
+      border-color: var(--dark-green);
+      background: var(--mint-green);
+    }
+
+    .package-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .package-name {
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+
+    .package-price {
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    /* Map */
+    #map {
+      height: 350px;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Job List */
+    .job-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    .job-card:hover {
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 1rem;
+    }
+
+    .job-id {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .job-status {
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .status-open { background: #FFF3CD; color: #856404; }
+    .status-accepted { background: #D1ECF1; color: #0C5460; }
+    .status-picked_up { background: #CCE5FF; color: #004085; }
+    .status-delivered { background: #D4EDDA; color: #155724; }
+
+    .job-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .job-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .job-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--dark-green);
+      margin-top: 0.5rem;
+    }
+
+    /* Messages */
+    .message {
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .message.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .message.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    .message.info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+
+    .hidden { display: none !important; }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-light);
+    }
+
+    .empty-state-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Payment Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .payment-modal {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .payment-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .payment-header h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .payment-amount {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--dark-green);
+      margin: 1rem 0;
+    }
+
+    .payment-details {
+      background: var(--light-bg);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .payment-detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .payment-detail-row:last-child {
+      border-bottom: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .crypto-options {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .crypto-option {
+      padding: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .crypto-option:hover {
+      border-color: var(--mint-green);
+      background: var(--light-bg);
+    }
+
+    .crypto-option.selected {
+      border-color: var(--dark-green);
+      background: var(--mint-green);
+    }
+
+    .crypto-icon {
+      font-size: 2rem;
+    }
+
+    .crypto-info h4 {
+      margin: 0 0 0.25rem;
+    }
+
+    .crypto-info p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .package-selector {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" style="text-decoration: none;">
+      <div class="logo">ecodrop<sup>3</sup></div>
+    </a>
+    <div class="nav-right">
+      <div class="user-info" onclick="window.location.href='profile.html'" style="cursor: pointer;">
+        <span>👤</span>
+        <span id="userName">Loading...</span>
+      </div>
+      <div id="workerAccess" style="display: none;">
+        <a href="gigworker-dashboard.html" class="btn btn-primary" style="text-decoration: none; background: #FFB84D; color: var(--text-dark); border: none;">🚴 Back to Deliveries</a>
+      </div>
+      <button class="btn btn-outline" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Left Column - Create Order -->
+    <div>
+      <div class="card">
+        <h2>📦 Create New Delivery</h2>
+        <div id="orderMessage"></div>
+
+        <form id="orderForm">
+          <!-- Package Size -->
+          <div class="form-group">
+            <label>Select Package Size</label>
+            <div class="package-selector">
+              <div class="package-option selected" data-size="small" onclick="selectPackage('small')">
+                <div class="package-icon">📦</div>
+                <div class="package-name">Small</div>
+                <div class="package-price">Base price</div>
+              </div>
+              <div class="package-option" data-size="medium" onclick="selectPackage('medium')">
+                <div class="package-icon">📦</div>
+                <div class="package-name">Medium</div>
+                <div class="package-price">+50%</div>
+              </div>
+              <div class="package-option" data-size="large" onclick="selectPackage('large')">
+                <div class="package-icon">📦</div>
+                <div class="package-name">Large</div>
+                <div class="package-price">+100%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Locker Selection -->
+          <div class="form-group">
+            <label for="lockerSelect">📍 Choose Pickup Locker</label>
+            <input 
+              type="text" 
+              id="lockerSelect" 
+              placeholder="Start typing locker name or address..." 
+              required 
+              autocomplete="off"
+            >
+            <div id="lockerSuggestions" class="autocomplete-suggestions"></div>
+            <small style="color: var(--text-light); font-size: 0.85rem; display: block; margin-top: 0.3rem;">
+              Search by locker name or street address
+            </small>
+          </div>
+
+          <!-- Map -->
+          <div id="map"></div>
+
+          <!-- Locker Code -->
+          <div class="form-group">
+            <label for="lockerCode">🔐 Locker Unlock Code</label>
+            <input type="text" id="lockerCode" placeholder="Enter code from courier" required>
+            <small style="color: var(--text-light); font-size: 0.85rem; display: block; margin-top: 0.3rem;">
+              This code will be used to unlock the locker when the courier picks up your package.
+            </small>
+          </div>
+
+          <!-- Delivery Address -->
+          <div class="form-group">
+            <label for="deliveryAddress">🏠 Delivery Address</label>
+            <input type="text" id="deliveryAddress" placeholder="Start typing an address in Athens..." required>
+            <small style="color: var(--text-light); font-size: 0.85rem; display: block; margin-top: 0.3rem;">
+              Address autocomplete powered by Google Maps
+            </small>
+          </div>
+
+          <!-- Instructions -->
+          <div class="form-group">
+            <label for="instructions">📝 Delivery Instructions (Optional)</label>
+            <textarea id="instructions" rows="3" placeholder="e.g., Ring doorbell, leave at reception..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-green" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+            Create Order & Pay
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Column - My Orders -->
+    <div>
+      <div class="card">
+        <h2>📋 My Orders</h2>
+        <div id="myOrdersContainer">
+          <div class="empty-state">
+            <div class="empty-state-icon">📭</div>
+            <p>No orders yet. Create your first delivery!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:3000/api';
+    let authToken = localStorage.getItem('authToken');
+    let currentUser = null;
+    let map = null;
+    let selectedPackage = 'small';
+    let selectedLocker = null;
+    let markers = [];
+    let autocomplete = null;
+    let selectedDeliveryCoords = null;
+
+    // Athens lockers - will be loaded from API
+    let lockers = [];
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (!authToken) {
+        window.location.href = 'signin.html';
+        return;
+      }
+
+      await loadUserProfile();
+      await loadLockers(); // Load from API first
+      initMap();
+      populateLockers();
+      initAutocomplete();
+      loadMyOrders();
+      
+      // Auto-refresh orders every 10 seconds
+      setInterval(loadMyOrders, 10000);
+    });
+
+    // Load lockers from API
+    async function loadLockers() {
+      try {
+        const res = await fetch(`${API_BASE}/lockers`);
+        const data = await res.json();
+        
+        if (data.success) {
+          lockers = data.lockers.map(locker => ({
+            id: locker._id,
+            name: locker.name,
+            address: locker.address,
+            lat: locker.lat,
+            lng: locker.lng,
+            rating: locker.rating,
+            placeId: locker.placeId
+          }));
+          console.log(`✅ Loaded ${lockers.length} lockers from database`);
+        }
+      } catch (error) {
+        console.error('Failed to load lockers:', error);
+        // Fallback to empty array
+        lockers = [];
+      }
+    }
+
+    // Load user profile
+    async function loadUserProfile() {
+      try {
+        const res = await fetch(`${API_BASE}/auth/me`, {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        const data = await res.json();
+        
+        if (data.success) {
+          currentUser = data.user;
+          document.getElementById('userName').textContent = 
+            data.user.firstName ? `${data.user.firstName} ${data.user.lastName}` : 
+            data.user.walletAddress?.substring(0, 8) + '...';
+          
+          // Show back to worker dashboard button if user is a worker
+          if (data.user.role === 'gigworker' || data.user.role === 'both') {
+            document.getElementById('workerAccess').style.display = 'block';
+          }
+        } else {
+          throw new Error('Failed to load profile');
+        }
+      } catch (error) {
+        console.error('Load profile error:', error);
+        logout();
+      }
+    }
+
+    // Initialize map
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 37.9755, lng: 23.7348 },
+        zoom: 12,
+        mapTypeControl: true,
+        streetViewControl: false,
+        fullscreenControl: false,
+        styles: [
+          {
+            featureType: "poi",
+            elementType: "labels",
+            stylers: [{ visibility: "off" }]
+          }
+        ]
+      });
+
+      // Try to get user's location
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const userLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            
+            // Center map on user's location
+            map.setCenter(userLocation);
+            map.setZoom(14);
+            
+            // Add marker for user's location
+            new google.maps.Marker({
+              position: userLocation,
+              map: map,
+              title: 'Your Location',
+              icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 10,
+                fillColor: '#4285F4',
+                fillOpacity: 1,
+                strokeColor: '#ffffff',
+                strokeWeight: 2
+              }
+            });
+            
+            console.log('✅ User location detected:', userLocation);
+          },
+          (error) => {
+            console.log('⚠️ Geolocation error:', error.message);
+            // Keep default Athens center if location fails
+          },
+          {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+          }
+        );
+      } else {
+        console.log('⚠️ Geolocation not supported by this browser');
+      }
+
+      // Icon mapping by provider
+      const getMarkerIcon = (lockerName) => {
+        const name = lockerName.toLowerCase();
+        const baseUrl = '/assets/icons/';
+        
+        if (name.includes('acs')) {
+          return {
+            url: baseUrl + 'acs-marker.webp',
+            scaledSize: new google.maps.Size(32, 32)
+          };
+        } else if (name.includes('skroutz')) {
+          return {
+            url: baseUrl + 'skroutz-marker.webp',
+            scaledSize: new google.maps.Size(32, 32)
+          };
+        } else if (name.includes('box now') || name.includes('boxnow')) {
+          return {
+            url: baseUrl + 'boxnow-marker.webp',
+            scaledSize: new google.maps.Size(32, 32)
+          };
+        } else if (name.includes('dhl')) {
+          return {
+            url: baseUrl + 'dhl-marker.webp',
+            scaledSize: new google.maps.Size(32, 32)
+          };
+        }
+        
+        // Fallback to default blue marker
+        return {
+          url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        };
+      };
+
+      // Add locker markers
+      let currentInfoWindow = null; // Track currently open info window
+      
+      lockers.forEach((locker, index) => {
+        const icon = getMarkerIcon(locker.name);
+        
+        const marker = new google.maps.Marker({
+          position: { lat: locker.lat, lng: locker.lng },
+          map: map,
+          title: locker.name,
+          icon: icon,
+          visible: true // Show all markers all the time
+        });
+
+        // Extract street for compact display
+        const addressParts = locker.address.split(',');
+        const street = addressParts[0] || locker.address;
+
+        const infoWindow = new google.maps.InfoWindow({
+          content: `
+            <div style="padding: 6px; max-width: 200px;">
+              <div style="font-weight: 600; font-size: 13px; margin-bottom: 4px;">${locker.name}</div>
+              <div style="font-size: 11px; color: #666; margin-bottom: 6px;">📍 ${street}</div>
+              ${locker.rating ? `<div style="font-size: 11px; color: #f39c12; margin-bottom: 6px;">⭐ ${locker.rating.toFixed(1)}</div>` : ''}
+              <button 
+                onclick="selectLockerFromMap('${locker.id}')" 
+                style="width: 100%; padding: 6px; background: var(--dark-green); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600;">
+                Select This Locker
+              </button>
+            </div>
+          `,
+          maxWidth: 220
+        });
+
+        marker.addListener('click', () => {
+          // Close previously open info window
+          if (currentInfoWindow) {
+            currentInfoWindow.close();
+          }
+          
+          // Open new info window
+          infoWindow.open(map, marker);
+          currentInfoWindow = infoWindow;
+        });
+
+        markers.push(marker);
+      });
+    }
+
+    // Initialize Google Places Autocomplete
+    function initAutocomplete() {
+      const input = document.getElementById('deliveryAddress');
+      
+      // Restrict to Athens, Greece
+      autocomplete = new google.maps.places.Autocomplete(input, {
+        componentRestrictions: { country: 'gr' },
+        fields: ['address_components', 'geometry', 'formatted_address'],
+        types: ['address']
+      });
+
+      // Bias to Athens area
+      autocomplete.setBounds({
+        north: 38.05,
+        south: 37.90,
+        east: 23.85,
+        west: 23.65
+      });
+
+      // When user selects an address
+      autocomplete.addListener('place_changed', () => {
+        const place = autocomplete.getPlace();
+        
+        if (!place.geometry) {
+          showMessage('orderMessage', 'Please select a valid address from the dropdown', 'error');
+          return;
+        }
+
+        selectedDeliveryCoords = {
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng()
+        };
+
+        // Add marker on map for delivery location
+        if (window.deliveryMarker) {
+          window.deliveryMarker.setMap(null);
+        }
+        
+        window.deliveryMarker = new google.maps.Marker({
+          position: selectedDeliveryCoords,
+          map: map,
+          title: 'Delivery Location',
+          icon: {
+            url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+          }
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+          content: '<b>Delivery Location</b>'
+        });
+
+        window.deliveryMarker.addListener('click', () => {
+          infoWindow.open(map, window.deliveryMarker);
+        });
+
+        // Pan to delivery location
+        map.panTo(selectedDeliveryCoords);
+
+        // Calculate distance if locker is selected
+        if (selectedLocker) {
+          const distance = calculateDistance(
+            selectedLocker.lat, selectedLocker.lng,
+            selectedDeliveryCoords.lat, selectedDeliveryCoords.lng
+          );
+          showMessage('orderMessage', `📏 Distance: ${distance.toFixed(2)} km`, 'info');
+        }
+      });
+    }
+
+    // Calculate distance between two points (Haversine formula)
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+      const R = 6371; // Earth's radius in km
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = 
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon/2) * Math.sin(dLon/2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      return R * c;
+    }
+
+    // Select locker from map click
+    function selectLockerFromMap(lockerId) {
+      const locker = lockers.find(l => l.id === lockerId);
+      
+      if (locker) {
+        const input = document.getElementById('lockerSelect');
+        const addressParts = locker.address.split(',');
+        const shortAddress = addressParts[0] || locker.address;
+        
+        input.value = `${locker.name} - ${shortAddress}`;
+        input.setAttribute('data-locker-id', lockerId);
+        selectedLocker = locker;
+        
+        // Scroll to locker field
+        input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Highlight the field briefly
+        input.style.border = '2px solid var(--mint-green)';
+        setTimeout(() => {
+          input.style.border = '2px solid var(--border)';
+        }, 1000);
+        
+        showMessage('orderMessage', `✅ Selected: ${locker.name}`, 'success');
+      }
+    }
+
+    // Populate locker dropdown - now with autocomplete
+    function populateLockers() {
+      const input = document.getElementById('lockerSelect');
+      const suggestionsDiv = document.getElementById('lockerSuggestions');
+      
+      // Search and filter
+      input.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        
+        if (searchTerm.length < 2) {
+          suggestionsDiv.classList.remove('show');
+          return;
+        }
+        
+        // Filter lockers by name or address
+        const filtered = lockers.filter(locker => 
+          locker.name.toLowerCase().includes(searchTerm) ||
+          locker.address.toLowerCase().includes(searchTerm)
+        ).slice(0, 10); // Limit to 10 results
+        
+        if (filtered.length > 0) {
+          suggestionsDiv.innerHTML = filtered.map(locker => {
+            // Extract street/area from address
+            const addressParts = locker.address.split(',');
+            const street = addressParts[0] || locker.address;
+            const area = addressParts[1] ? addressParts[1].trim() : '';
+            
+            return `
+              <div class="suggestion-item" data-locker-id="${locker.id}">
+                <div class="suggestion-name">${locker.name}</div>
+                <div class="suggestion-address">📍 ${street}${area ? ', ' + area : ''}</div>
+                ${locker.rating ? `<div class="suggestion-rating">⭐ ${locker.rating.toFixed(1)} (${locker.userRatingsTotal || 0} reviews)</div>` : ''}
+              </div>
+            `;
+          }).join('');
+          
+          suggestionsDiv.classList.add('show');
+          
+          // Add click handlers
+          suggestionsDiv.querySelectorAll('.suggestion-item').forEach(item => {
+            item.addEventListener('click', () => {
+              const lockerId = item.getAttribute('data-locker-id');
+              const locker = lockers.find(l => l.id === lockerId);
+              
+              if (locker) {
+                // Extract street name for display
+                const addressParts = locker.address.split(',');
+                const shortAddress = addressParts[0] || locker.address;
+                
+                input.value = `${locker.name} - ${shortAddress}`;
+                input.setAttribute('data-locker-id', lockerId);
+                selectedLocker = locker;
+                suggestionsDiv.classList.remove('show');
+                
+                // Update map - zoom in and show selected marker
+                map.setCenter({ lat: locker.lat, lng: locker.lng });
+                map.setZoom(16);
+                
+                // Show the selected locker marker
+                const markerIndex = lockers.findIndex(l => l.id === lockerId);
+                if (markerIndex !== -1 && markers[markerIndex]) {
+                  // Hide all other markers
+                  markers.forEach((m, idx) => {
+                    if (idx === markerIndex) {
+                      m.setVisible(true);
+                    } else {
+                      m.setVisible(false);
+                    }
+                  });
+                }
+                
+                // Calculate distance if delivery address is selected
+                if (selectedDeliveryCoords) {
+                  const distance = calculateDistance(
+                    locker.lat, locker.lng,
+                    selectedDeliveryCoords.lat, selectedDeliveryCoords.lng
+                  );
+                  showMessage('orderMessage', `📏 Distance: ${distance.toFixed(2)} km`, 'info');
+                }
+              }
+            });
+          });
+        } else {
+          suggestionsDiv.innerHTML = '<div class="suggestion-item">No lockers found</div>';
+          suggestionsDiv.classList.add('show');
+        }
+      });
+      
+      // Close suggestions when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.form-group')) {
+          suggestionsDiv.classList.remove('show');
+        }
+      });
+    }
+
+    // Update map view
+    function updateMapView() {
+      const input = document.getElementById('lockerSelect');
+      const lockerId = input.getAttribute('data-locker-id');
+      selectedLocker = lockers.find(l => l.id === lockerId);
+      if (selectedLocker) {
+        map.setCenter({ lat: selectedLocker.lat, lng: selectedLocker.lng });
+        map.setZoom(15);
+      }
+    }
+
+    // Select package
+    function selectPackage(size) {
+      selectedPackage = size;
+      document.querySelectorAll('.package-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+      document.querySelector(`[data-size="${size}"]`).classList.add('selected');
+    }
+
+    // Create order
+    document.getElementById('orderForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const input = document.getElementById('lockerSelect');
+      const lockerId = input.getAttribute('data-locker-id');
+      const lockerCode = document.getElementById('lockerCode').value.trim().toUpperCase();
+      const deliveryAddress = document.getElementById('deliveryAddress').value;
+      const instructions = document.getElementById('instructions').value;
+
+      if (!lockerId || !selectedLocker) {
+        showMessage('orderMessage', 'Please select a pickup locker from the suggestions', 'error');
+        return;
+      }
+
+      if (!lockerCode || lockerCode.length < 4) {
+        showMessage('orderMessage', 'Please enter a valid locker code (minimum 4 characters)', 'error');
+        return;
+      }
+
+      if (!selectedDeliveryCoords) {
+        showMessage('orderMessage', 'Please select a delivery address from the dropdown', 'error');
+        return;
+      }
+
+      try {
+        showMessage('orderMessage', '� Creating order...', 'info');
+
+        // Calculate distance
+        const distance = calculateDistance(
+          selectedLocker.lat, selectedLocker.lng,
+          selectedDeliveryCoords.lat, selectedDeliveryCoords.lng
+        );
+
+        // Calculate price
+        showMessage('orderMessage', '💰 Calculating price...', 'info');
+        const priceRes = await fetch(`${API_BASE}/pricing/calculate`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify({
+            packageSize: selectedPackage,
+            distanceKm: distance
+          })
+        });
+
+        const priceData = await priceRes.json();
+        if (!priceData.success) throw new Error(priceData.error);
+
+        // Store order data temporarily (don't create job yet)
+        window.pendingOrderData = {
+          customerId: currentUser.walletAddress || currentUser.email,
+          customerWallet: currentUser.walletAddress || currentUser.email,
+          packageSize: selectedPackage,
+          lockerLocation: selectedLocker.name,
+          lockerCode: lockerCode,
+          lockerCoords: { lat: selectedLocker.lat, lng: selectedLocker.lng },
+          deliveryAddress,
+          deliveryCoords: { lat: selectedDeliveryCoords.lat, lng: selectedDeliveryCoords.lng },
+          deliveryInstructions: instructions,
+          distanceKm: distance,
+          amount: priceData.pricing.total,
+          platformFee: priceData.pricing.platformFee
+        };
+
+        window.pendingPricing = priceData.pricing;
+        window.pendingDistance = distance;
+
+        // Show payment modal (order will be created after payment succeeds)
+        showPaymentModal(priceData.pricing, distance);
+
+      } catch (error) {
+        showMessage('orderMessage', '❌ ' + error.message, 'error');
+      }
+    });
+
+    // Payment Modal Functions
+    let selectedCrypto = 'diem';
+
+    function showPaymentModal(pricing, distance) {
+      if (!pricing || typeof pricing.total === 'undefined') {
+        console.error('Invalid pricing data:', pricing);
+        alert('Error loading payment details. Please try again.');
+        return;
+      }
+      
+      console.log('Payment Modal - Pricing:', pricing); // Debug log
+      
+      document.getElementById('paymentAmount').textContent = `€${pricing.total.toFixed(2)}`;
+      document.getElementById('payDetailSize').textContent = selectedPackage.charAt(0).toUpperCase() + selectedPackage.slice(1);
+      document.getElementById('payDetailDistance').textContent = `${distance.toFixed(2)} km`;
+      document.getElementById('payDetailBase').textContent = `€${(pricing.subtotal || 0).toFixed(2)}`;
+      document.getElementById('payDetailPlatform').textContent = `€${(pricing.platformFee || 0).toFixed(2)}`;
+      document.getElementById('payDetailTotal').textContent = `€${pricing.total.toFixed(2)}`;
+      
+      document.getElementById('paymentModal').classList.add('show');
+    }
+
+    function closePaymentModal() {
+      console.log('Closing payment modal - no order will be created');
+      document.getElementById('paymentModal').classList.remove('show');
+      
+      // Clear pending order data
+      window.pendingOrderData = null;
+      window.pendingPricing = null;
+      window.pendingDistance = null;
+      
+      // Clear any lingering messages
+      showMessage('orderMessage', '❌ Payment cancelled', 'error');
+      setTimeout(() => {
+        document.getElementById('orderMessage').innerHTML = '';
+      }, 3000);
+      
+      // Re-enable Pay button in case it was disabled
+      const payBtn = document.querySelector('[onclick="processPayment()"]');
+      if (payBtn) {
+        payBtn.disabled = false;
+        payBtn.textContent = 'Pay Now';
+      }
+    }
+
+    function selectCrypto(crypto) {
+      selectedCrypto = crypto;
+      document.querySelectorAll('.crypto-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+      document.querySelector(`[data-crypto="${crypto}"]`).classList.add('selected');
+      
+      // Always generate QR and update price for ETH
+      if (crypto === 'eth') {
+        generatePaymentQR();
+        fetchETHPrice();
+      }
+    }
+
+    // Fetch live ETH price and calculate ETH amount
+    async function fetchETHPrice() {
+      try {
+        const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=eur');
+        const data = await res.json();
+        const ethPriceEur = data.ethereum.eur;
+        document.getElementById('ethPrice').textContent = ethPriceEur.toFixed(2);
+        
+        // Calculate ETH amount needed
+        if (window.pendingPricing && window.pendingPricing.total) {
+          const ethAmount = window.pendingPricing.total / ethPriceEur;
+          document.getElementById('ethAmount').textContent = ethAmount.toFixed(6);
+        }
+      } catch (error) {
+        console.error('Failed to fetch ETH price:', error);
+        document.getElementById('ethPrice').textContent = '2000'; // Fallback
+        
+        // Calculate with fallback price
+        if (window.pendingPricing && window.pendingPricing.total) {
+          const ethAmount = window.pendingPricing.total / 2000;
+          document.getElementById('ethAmount').textContent = ethAmount.toFixed(6);
+        }
+      }
+    }
+
+    // Generate QR code
+    function generatePaymentQR() {
+      const qrContainer = document.getElementById('qrCodeContainer');
+      qrContainer.innerHTML = ''; // Clear previous
+      
+      // Fake wallet address for demo
+      const walletAddress = '0x742d35Cc6634C0532925a3b844Bc9e7595f95A8e';
+      document.getElementById('walletAddressDisplay').textContent = walletAddress;
+      
+      // Create QR code with proper error handling
+      try {
+        new QRCode(qrContainer, {
+          text: `ethereum:${walletAddress}?value=${window.pendingPricing?.total || 0}`,
+          width: 200,
+          height: 200,
+          colorDark: '#000',
+          colorLight: '#fff',
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      } catch (error) {
+        console.error('QR Code generation failed:', error);
+        qrContainer.innerHTML = '<p style="color: #999; font-size: 0.9rem;">QR Code failed to load</p>';
+      }
+    }
+
+    // Copy wallet address to clipboard when clicked
+    function copyWalletAddress() {
+      const walletAddress = document.getElementById('walletAddressDisplay').textContent;
+      navigator.clipboard.writeText(walletAddress).then(() => {
+        const addressElement = document.getElementById('walletAddressDisplay');
+        const originalBg = addressElement.style.background;
+        addressElement.style.background = '#d4edda';
+        
+        setTimeout(() => {
+          addressElement.style.background = originalBg;
+        }, 1500);
+      }).catch(() => {
+        alert('Failed to copy. Please try again.');
+      });
+    }
+
+    async function processPayment() {
+      console.log('processPayment called - starting payment process');
+      
+      // Verify payment modal is still open
+      const paymentModal = document.getElementById('paymentModal');
+      if (!paymentModal.classList.contains('show')) {
+        console.log('Payment modal closed - aborting');
+        alert('Payment modal was closed. Please try again.');
+        return;
+      }
+
+      if (!window.pendingOrderData) {
+        console.log('No pending order data - aborting');
+        alert('No pending order found');
+        return;
+      }
+
+      try {
+        const payButton = event.target;
+        payButton.disabled = true;
+        payButton.textContent = 'Processing...';
+
+        // First, create the job on backend
+        console.log('Creating order with data:', window.pendingOrderData);
+        showMessage('orderMessage', '📝 Creating order...', 'info');
+        const jobRes = await fetch(`${API_BASE}/jobs`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify(window.pendingOrderData)
+        });
+
+        const jobData = await jobRes.json();
+        if (!jobData.success) throw new Error(jobData.error);
+
+        const createdJob = jobData.job;
+
+        // Then process payment for the created job
+        showMessage('orderMessage', '💰 Processing payment...', 'info');
+        const escrowMeta = await BlockchainService.deployEscrow({
+          totalEur: window.pendingPricing.total,
+          currency: selectedCrypto
+        });
+
+        const payRes = await fetch(`${API_BASE}/jobs/${createdJob._id}/pay`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify({
+            cryptocurrency: selectedCrypto,
+            tokenSymbol: escrowMeta.tokenSymbol,
+            amountCrypto: escrowMeta.amountCrypto,
+            transactionHash: escrowMeta.transactionHash,
+            contractAddress: escrowMeta.contractAddress,
+            network: escrowMeta.network,
+            chainId: escrowMeta.chainId,
+            amount: window.pendingPricing.total
+          })
+        });
+
+        const payData = await payRes.json();
+        if (!payData.success) throw new Error(payData.error);
+
+        // Success!
+        closePaymentModal();
+        showMessage('orderMessage', '✅ Payment successful! Order confirmed.', 'success');
+        document.getElementById('orderForm').reset();
+        selectPackage('small');
+        selectedLocker = null;
+        selectedDeliveryCoords = null;
+        loadMyOrders();
+
+      } catch (error) {
+        alert('Payment failed: ' + error.message);
+        event.target.disabled = false;
+        event.target.textContent = 'Pay Now';
+      }
+    }
+
+    // Track rated jobs locally to prevent re-rating (jobId -> rating value)
+    const ratedJobs = new Map();
+
+    // Load my orders
+    async function loadMyOrders() {
+      try {
+          const userId = currentUser.walletAddress || currentUser.email;
+          const res = await fetch(`${API_BASE}/jobs/my-jobs?userId=${encodeURIComponent(userId)}`, {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        const data = await res.json();
+
+        const container = document.getElementById('myOrdersContainer');
+        
+        // Show ONLY PAID orders (active + delivered that haven't been rated yet, exclude cancelled and unpaid)
+        const activeOrders = data.jobs?.filter(job => 
+          job.paid === true && 
+          (job.status !== 'delivered' || !job.gigWorkerRating) && 
+          job.status !== 'cancelled'
+        ) || [];
+        
+        if (activeOrders.length > 0) {
+          container.innerHTML = activeOrders.map(job => `
+            <div class="job-card" data-job-id="${job._id}">
+              <div class="job-header">
+                <div>
+                  <div class="job-id">Order #${job._id.substring(0, 8)}</div>
+                  <div style="font-weight: 600; margin-top: 0.3rem;">${job.lockerLocation}</div>
+                </div>
+                <div class="job-status status-${job.status}">${formatStatus(job.status)}</div>
+              </div>
+              <div class="job-details">
+                <div class="job-detail">📦 ${job.packageSize}</div>
+                <div class="job-detail">📏 ${job.distanceKm?.toFixed(2) || 'N/A'} km</div>
+                <div class="job-detail">📅 ${new Date(job.createdAt).toLocaleDateString()}</div>
+                <div class="job-detail">⏰ ${new Date(job.createdAt).toLocaleTimeString()}</div>
+              </div>
+              ${job.deliveryInstructions ? `<div style="background: #f0f8ff; padding: 0.8rem; border-radius: 8px; margin-bottom: 0.5rem; font-size: 0.9rem;"><strong>📝 Instructions:</strong> ${job.deliveryInstructions}</div>` : ''}
+                ${job.status === 'delivered' ? `
+                  <div style="background: #d4edda; padding: 0.8rem; border-radius: 8px; margin-top: 0.5rem; font-size: 0.85rem;">
+                    <strong>✅ Delivered Successfully!</strong><br>
+                    <div style="margin-top: 0.8rem;">
+                      <strong>Rate your delivery person:</strong>
+                      <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem; font-size: 1.5rem;">
+                        ${[1,2,3,4,5].map(star => `<span class="star-rating" data-rating="${star}" onclick="rateDropper('${job._id}', ${star})" style="cursor: pointer; opacity: 0.3; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.3'">⭐</span>`).join('')}
+                      </div>
+                    </div>
+                    ${job.contractAddress ? `<br><strong>🧾 Escrow:</strong> ${job.contractAddress.substring(0,10)}...` : ''}
+                    ${job.tokenSymbol ? `<br><strong>💰 Paid:</strong> ${job.amountCrypto} ${job.tokenSymbol}` : ''}
+                  </div>
+                ` : `
+                  <div style="background: var(--mint-green); padding: 0.8rem; border-radius: 8px; margin-top: 0.5rem; font-size: 0.85rem;">
+                    <strong>🔐 Locker Code:</strong> ${job.lockerCode || 'N/A'}<br>
+                    ${job.gigWorkerName && (job.status === 'accepted' || job.status === 'picked_up') ? `<strong>👤 Dropper:</strong> ${job.gigWorkerName}<br>` : ''}
+                    ${job.status === 'picked_up' ? `<strong>✅ In Transit</strong>` : job.status === 'accepted' ? `<em>Dropper assigned, waiting for pickup...</em>` : `<em>Waiting for dropper...</em>`}
+                    ${job.contractAddress ? `<br><strong>🧾 Escrow:</strong> ${job.contractAddress.substring(0,10)}...` : ''}
+                    ${job.tokenSymbol ? `<br><strong>💰 Paid:</strong> ${job.amountCrypto} ${job.tokenSymbol}` : ''}
+                  </div>
+                `}
+              ${(job.status === 'accepted' || job.status === 'picked_up') && job.paid ? `
+                <div style="background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 100%); padding: 0.6rem 0.8rem; border-radius: 8px; margin-top: 0.5rem; font-size: 0.85rem; color: white; display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="font-size: 1.2rem;">🔒</span>
+                  <div style="flex: 1;">
+                    <strong>Funds in Escrow</strong><br>
+                    <span style="font-size: 0.8rem; opacity: 0.9;">€${job.amount?.toFixed(2)} secured until delivery</span>
+                  </div>
+                </div>
+              ` : ''}
+              ${job.deliveryConfirmationCode && job.status === 'picked_up' ? `
+                <div style="background: #FFE4B5; padding: 0.8rem; border-radius: 8px; margin-top: 0.5rem; font-size: 0.85rem;">
+                  <strong>Delivery Code (give to dropper):</strong> ${formatDisplayCode(job.deliveryConfirmationCode)}
+                </div>
+              ` : ''}
+              ${job.status === 'open' ? `
+                <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                  <button class="btn btn-danger" onclick="cancelOrder('${job._id}')" style="flex: 1; background: #dc3545; color: white; padding: 0.7rem;">Cancel Order</button>
+                </div>
+              ` : ''}
+              <div class="job-price">€${job.amount?.toFixed(2) || '0.00'}</div>
+            </div>
+          `).join('');
+        } else {
+          container.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">📭</div>
+              <p>No active orders. Create a new delivery or check your profile for completed orders.</p>
+            </div>
+          `;
+        }
+      } catch (error) {
+        console.error('Load orders error:', error);
+      }
+    }
+
+    // Format status
+    function formatStatus(status) {
+      const statusMap = {
+        'open': 'Waiting for Dropper',
+        'accepted': 'Dropper Assigned',
+        'picked_up': 'Out for Delivery',
+        'delivered': 'Delivered'
+      };
+      return statusMap[status] || status;
+    }
+
+    // Format display code (ensure 4-digit numeric)
+    function formatDisplayCode(code) {
+      if (!code) return '----';
+      // If already 4 numeric digits
+      if (/^\d{4}$/.test(code)) return code;
+      // Extract digits from existing code
+      const digits = (code.match(/\d+/g) || []).join('').slice(0,4);
+      if (digits.length === 4) return digits;
+      // Fallback: convert hex chars to digits mapping
+      const hexToDigit = code.replace(/[^A-F0-9]/gi,'').split('').map(ch => {
+        if (/\d/.test(ch)) return ch; // keep digit
+        return (parseInt(ch,16) % 10).toString();
+      }).join('').slice(0,4).padEnd(4,'0');
+      return hexToDigit || '0000';
+    }
+
+    // Rate delivery dropper
+    async function rateDropper(jobId, rating) {
+      // Check if already rated
+      if (ratedJobs.has(jobId)) {
+        showMessage('orderMessage', '❌ You have already rated this delivery', 'error');
+        return;
+      }
+      
+      // Find the rating container for this job
+      const jobCard = document.querySelector(`[data-job-id="${jobId}"]`);
+      const ratingContainer = jobCard.querySelector('.star-rating')?.parentElement?.parentElement;
+      
+      if (!ratingContainer) return;
+      
+      // Add to local cache immediately with the rating value
+      ratedJobs.set(jobId, rating);
+      
+      // Immediately replace clickable stars with submitted rating display
+      ratingContainer.innerHTML = `
+        <div style="margin-top: 0.5rem;">
+          <strong>Your Rating:</strong> ${'⭐'.repeat(rating)}
+        </div>
+      `;
+      
+      try {
+        const res = await fetch(`${API_BASE}/jobs/${jobId}/rate`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify({
+            customerId: currentUser.walletAddress || currentUser.email,
+            rating: rating
+          })
+        });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+        
+        // Wait 2 seconds before animating out
+        setTimeout(() => {
+          // Remove the job card with slower animation
+          jobCard.style.transition = 'opacity 1.5s, transform 1.5s';
+          jobCard.style.opacity = '0';
+          jobCard.style.transform = 'translateY(-20px)';
+          
+          // Remove from DOM after animation
+          setTimeout(() => {
+            jobCard.remove();
+            // Reload to update counts and check if empty
+            loadMyOrders();
+          }, 1500);
+        }, 2000);
+      } catch (error) {
+        console.error('Rating error:', error);
+        ratedJobs.delete(jobId);
+        showMessage('orderMessage', '❌ Failed to submit rating', 'error');
+      }
+    }
+
+    // Cancel order
+    async function cancelOrder(jobId) {
+      if (!confirm('Are you sure you want to cancel this order?')) {
+        return;
+      }
+
+      try {
+        showMessage('orderMessage', '⏳ Cancelling order...', 'info');
+
+        const res = await fetch(`${API_BASE}/jobs/${jobId}/cancel`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify({
+            customerId: currentUser.walletAddress || currentUser.email
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          showMessage('orderMessage', '✅ Order cancelled successfully', 'success');
+          setTimeout(() => {
+            loadMyOrders();
+          }, 1000);
+        } else {
+          throw new Error(data.error);
+        }
+      } catch (error) {
+        showMessage('orderMessage', '❌ Failed to cancel order: ' + error.message, 'error');
+      }
+    }
+
+    // Show message
+    function showMessage(elementId, message, type) {
+      const el = document.getElementById(elementId);
+      el.innerHTML = `<div class="message ${type}">${message}</div>`;
+      setTimeout(() => { el.innerHTML = ''; }, 5000);
+    }
+
+    // Sleep
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // Logout
+    // Logout
+    function logout() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('accountType');
+      window.location.href = 'index.html';
+    }
+  </script>
+
+  <!-- Blockchain stub for per-order escrow (easy future integration) -->
+  <script src="js/blockchain.js"></script>
+
+  <!-- Payment Modal -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="payment-modal">
+      <div class="payment-header">
+        <h2>💳 Complete Payment</h2>
+        <p>Choose your preferred cryptocurrency</p>
+        <div class="payment-amount" id="paymentAmount">€0.00</div>
+        <div style="font-size: 1.2rem; color: #666; margin-top: 0.5rem; font-weight: 500;">
+          <span id="ethAmount">0.0000</span> ETH
+        </div>
+      </div>
+
+      <div class="payment-details" id="paymentDetails">
+        <div class="payment-detail-row">
+          <span>Package Size:</span>
+          <span id="payDetailSize">-</span>
+        </div>
+        <div class="payment-detail-row">
+          <span>Distance:</span>
+          <span id="payDetailDistance">-</span>
+        </div>
+        <div class="payment-detail-row">
+          <span>Base Fee:</span>
+          <span id="payDetailBase">-</span>
+        </div>
+        <div class="payment-detail-row">
+          <span>Platform Fee (10%):</span>
+          <span id="payDetailPlatform">-</span>
+        </div>
+        <div class="payment-detail-row">
+          <span>Total:</span>
+          <span id="payDetailTotal">-</span>
+        </div>
+      </div>
+
+      <div class="crypto-options">
+        <div class="crypto-option selected" data-crypto="eth" onclick="selectCrypto('eth')">
+          <div class="crypto-icon">Ξ</div>
+          <div class="crypto-info">
+            <h4>Ethereum (ETH)</h4>
+            <p>Sepolia Testnet</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- QR Code Section -->
+      <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px; text-align: center; margin-bottom: 1rem;">
+        <div style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">
+          <strong>ETH Price:</strong> €<span id="ethPrice">0.00</span>
+        </div>
+        <div id="qrCodeContainer" style="display: flex; justify-content: center; margin-bottom: 1rem; min-height: 200px;"></div>
+        <div style="font-size: 0.85rem; color: var(--text-dark); margin-bottom: 1rem;">
+          <strong>Wallet Address:</strong><br>
+          <code id="walletAddressDisplay" onclick="copyWalletAddress()" style="word-break: break-all; background: white; padding: 0.75rem; border-radius: 5px; display: block; margin-top: 0.5rem; cursor: pointer; user-select: all; transition: all 0.3s ease;">0x...</code>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" onclick="processPayment()" style="width: 100%; margin-bottom: 0.5rem;">
+        Pay Now
+      </button>
+      <button class="btn btn-outline" onclick="closePaymentModal()" style="width: 100%;">
+        Cancel
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>

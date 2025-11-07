@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - ecodrop³</title>
+  <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --mint-green: #B8F4D4;
+      --dark-green: #4CAF50;
+      --text-dark: #2c3e50;
+      --text-light: #5a6c7d;
+      --white: #ffffff;
+      --light-bg: #f8f9fa;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .signin-container {
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .signin-sidebar {
+      flex: 1;
+      background: var(--mint-green);
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .signin-sidebar .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--text-dark);
+      margin-bottom: 2rem;
+    }
+
+    .signin-sidebar .logo sup {
+      color: var(--dark-green);
+    }
+
+    .signin-sidebar h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+
+    .signin-sidebar p {
+      color: var(--text-dark);
+      opacity: 0.8;
+    }
+
+    .signin-form {
+      flex: 1;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .signin-form h2 {
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .signin-form .subtitle {
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.9rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--dark-green);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--text-dark);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: #1a252f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .btn-primary:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .message {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .message.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .message.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .message.info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .signup-link a {
+      color: var(--dark-green);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--text-light);
+      text-decoration: none;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      color: var(--text-dark);
+    }
+
+    @media (max-width: 768px) {
+      .signin-container {
+        flex-direction: column;
+      }
+
+      .signin-sidebar {
+        padding: 2rem;
+      }
+
+      .signin-form {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signin-container">
+    <!-- Sidebar -->
+    <div class="signin-sidebar">
+      <div class="logo">ecodrop<sup>3</sup></div>
+      <h2>Welcome Back!</h2>
+      <p>Sign in to your account to continue making eco-friendly deliveries.</p>
+    </div>
+
+    <!-- Sign In Form -->
+    <div class="signin-form">
+      <a href="index.html" class="back-link">← Back to home</a>
+      <h2>Sign in to ecodrop</h2>
+      <p class="subtitle">Use your wallet to sign in</p>
+
+      <div id="message"></div>
+
+      <!-- MetaMask Sign In -->
+      <button type="button" class="btn btn-primary" style="margin-bottom: 2rem;" onclick="signInWithMetaMask()">
+        🦊 Sign In with MetaMask
+      </button>
+
+      <div style="text-align: center; margin: 1.5rem 0; color: var(--text-light); font-weight: 600;">
+        OR
+      </div>
+
+      <form id="signinForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          Sign In
+        </button>
+      </form>
+
+      <div class="signup-link">
+        Don't have an account? <a href="signup.html">Sign up</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:3000/api';
+
+    // Sign in with MetaMask
+    async function signInWithMetaMask() {
+      try {
+        if (typeof window.ethereum === 'undefined') {
+          showMessage('Please install MetaMask to continue', 'error');
+          return;
+        }
+
+        showMessage('Connecting to MetaMask...', 'info');
+
+        // Connect wallet
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const walletAddress = accounts[0];
+
+        showMessage('Wallet connected. Signing message...', 'info');
+
+        // Sign message
+        const message = `Sign in to ecodrop³\nWallet: ${walletAddress}\nTime: ${Date.now()}`;
+        const signature = await window.ethereum.request({
+          method: 'personal_sign',
+          params: [message, walletAddress]
+        });
+
+        showMessage('Authenticating...', 'info');
+
+        // Login
+        const res = await fetch(`${API_BASE}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            walletAddress,
+            signature,
+            message
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          showMessage('Login successful! Redirecting...', 'success');
+          localStorage.setItem('authToken', data.token);
+          localStorage.setItem('accountType', data.user.accountType);
+          
+          setTimeout(() => {
+            if (data.user.accountType === 'customer') {
+              window.location.href = 'customer-dashboard.html';
+            } else {
+              window.location.href = 'gigworker-dashboard.html';
+            }
+          }, 1000);
+        } else {
+          throw new Error(data.error || 'Failed to sign in');
+        }
+      } catch (error) {
+        console.error('MetaMask sign in error:', error);
+        showMessage('Error: ' + error.message, 'error');
+      }
+    }
+
+    // Sign in with username/password
+    document.getElementById('signinForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        showMessage('Signing in...', 'info');
+
+        const res = await fetch(`${API_BASE}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            password
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          showMessage('Login successful! Redirecting...', 'success');
+          localStorage.setItem('authToken', data.token);
+          localStorage.setItem('accountType', data.user.accountType);
+          
+          setTimeout(() => {
+            if (data.user.accountType === 'customer') {
+              window.location.href = 'customer-dashboard.html';
+            } else {
+              window.location.href = 'gigworker-dashboard.html';
+            }
+          }, 1000);
+        } else {
+          throw new Error(data.error || 'Invalid credentials');
+        }
+      } catch (error) {
+        console.error('Sign in error:', error);
+        showMessage('Error: ' + error.message, 'error');
+      }
+    });
+
+    function showMessage(msg, type) {
+      const messageDiv = document.getElementById('message');
+      messageDiv.innerHTML = `<div class="message ${type}">${msg}</div>`;
+    }
+  </script>
+
+</body>
+</html>
