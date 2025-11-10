@@ -47,22 +47,23 @@ A decentralized intermediate delivery platform where couriers deliver parcels to
 npm install
 
 # 2. Setup environment variables
-# Copy .env.example to .env and configure:
-cp .env.example .env
-
-# Then edit .env with your credentials:
+# Create .env file with:
 PORT=3000
 MONGODB_URI=mongodb://localhost:27017/diem_delivery
 JWT_SECRET=your_jwt_secret_here
-GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 
 # 3. Ensure MongoDB is running
 # (Use MongoDB Compass or local MongoDB instance)
 
-# 4. Start development server
+# 4. Add your Google Maps API Key
+# In the following files, replace 'YOUR_GOOGLE_MAPS_API_KEY' with your actual API key:
+# - public/customer-dashboard.html (line 7)
+# - public/profile.html (line 7)
+
+# 5. Start development server
 npm run dev
 
-# 5. Open browser
+# 6. Open browser
 # Navigate to http://localhost:3000
 ```
 
@@ -71,7 +72,13 @@ npm run dev
 1. **Install MetaMask** browser extension
 2. **Switch to Sepolia Testnet** in MetaMask
 3. **Get test ETH** from [Sepolia Faucet](https://sepoliafaucet.com/)
-4. **Sign up** on the platform and connect your wallet
+4. **Get Google Maps API Key**:
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Create a new project or select existing one
+   - Enable **Maps JavaScript API** and **Places API**
+   - Create credentials (API Key)
+   - Replace `YOUR_GOOGLE_MAPS_API_KEY` in the HTML files
+5. **Sign up** on the platform and connect your wallet
 
 ## Smart Locker Network
 
@@ -225,6 +232,12 @@ This project demonstrates the potential of **blockchain technology** to revoluti
 - Fair compensation for gig workers (90% earnings)
 - Transparent, trustless transactions
 - Real-world application of Web3 technology
+
+### Team
+- **John Terzopoulos** - Undergraduate BA
+- **Sakshi Agarwal** - PhD Strategic Management
+- **Filoktitis Maravelakis** - Undergraduate BA
+- **Christos Papafragkos** - CS Undergraduate
 
 ### Team Focus
 Our goal is to create a **fairer, more transparent alternative** to traditional delivery platforms that take large commission cuts. By leveraging blockchain, we ensure payment security and eliminate the need for trust between strangers.

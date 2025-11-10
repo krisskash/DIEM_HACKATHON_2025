@@ -38,7 +38,6 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/jobs', require('./routes/jobs'));
 app.use('/api/pricing', require('./routes/pricing'));
 app.use('/api/lockers', require('./routes/lockers'));
-app.use('/api/config', require('./routes/config'));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
