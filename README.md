@@ -69,16 +69,14 @@ npm run dev
 
 ### First Time Setup
 
-1. **Install MetaMask** browser extension
-2. **Switch to Sepolia Testnet** in MetaMask
-3. **Get test ETH** from [Sepolia Faucet](https://sepoliafaucet.com/)
-4. **Get Google Maps API Key**:
+
+1. **Get Google Maps API Key**:
    - Go to [Google Cloud Console](https://console.cloud.google.com/)
    - Create a new project or select existing one
    - Enable **Maps JavaScript API** and **Places API**
    - Create credentials (API Key)
    - Replace `YOUR_GOOGLE_MAPS_API_KEY` in the HTML files
-5. **Sign up** on the platform and connect your wallet
+2. **Sign up** on the platform and connect your wallet
 
 ## Smart Locker Network
 
@@ -86,7 +84,7 @@ npm run dev
 
 The platform features **real ACS Smartpoint lockers** across Athens, scraped from Google Maps Places API. The database contains actual locker locations with:
 
-- **2000+ verified locker locations** throughout Athens metropolitan area
+- **100+ verified locker locations** throughout Athens metropolitan area
 - Real addresses, coordinates (lat/lng), and place IDs
 - User ratings and reviews from Google Maps
 - Coverage across all major neighborhoods and districts
